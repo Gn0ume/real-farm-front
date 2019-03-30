@@ -1,0 +1,25 @@
+.logo_footer
+{
+    display: flex;
+	flex-direction: column;
+	margin-right: 140px;    
+}
+
+.logo_footer a
+{
+	margin-bottom: 15px;
+}
+
+.logo_text
+{
+    font: normal 14px 'Montserrat';
+	color: #575871;
+	line-height: 25px;    
+}
+
+.logo_footer_text
+{
+    font: normal 14px 'Montserrat';
+	color: #575871;
+	line-height: 25px;
+}

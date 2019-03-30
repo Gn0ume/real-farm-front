@@ -1,0 +1,13 @@
+.logo
+{
+    position: absolute;
+    top: -10px;
+    left: 107px;  
+}
+
+.logo_text
+{
+    font: bold 19px 'Dosis';
+	color: black;
+	margin-bottom: -4px;  
+}

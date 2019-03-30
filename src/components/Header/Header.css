@@ -1,0 +1,16 @@
+header
+{
+    display: flex;
+	justify-content: flex-end;
+	margin: 0 23px;
+	position: relative;
+	border-bottom: solid 1px #DCDCDC;
+}
+
+.menu
+{
+    display: flex;
+	align-items: center;
+	height: 14px;
+    padding: 26px 117px 36px 0;   
+}

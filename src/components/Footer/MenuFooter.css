@@ -1,0 +1,18 @@
+.navigation
+{
+    display: flex;
+	flex-direction: column;
+	margin-right: 116px;
+}
+
+.navigation a
+{
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.navigation_item
+{
+    font: normal 14px 'Montserrat';
+	color: #8f90a0;
+}

@@ -1,0 +1,12 @@
+.menu_items
+{
+   	display: flex;
+	font: normal 14px 'Montserrat';
+	list-style: none;
+	color: #676878; 
+}
+
+.menu_items li
+{
+    margin-right: 29px;
+}
