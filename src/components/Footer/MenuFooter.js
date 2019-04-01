@@ -1,17 +1,23 @@
 import React from 'react';
 import './MenuFooter.css';
+import ReactSVG from 'react-svg';
 
 class MenuFooter extends React.Component {
-  render() {
-    return (
-        <div className="navigation">
-			<h2>Navigation</h2>
-			<a href="#"><span className="navigation_item">About Us</span></a>
-			<a href="#"><span className="navigation_item">News</span></a>
-			<a href="#"><span className="navigation_item">Support</span></a>
+	constructor(props){
+		super(props);
+	}
+
+	render() {
+		const items = this.props.items.map((item, key) => <a href={item.link} key={key}><span>{item.body ? item.body : item.text}</span></a>);
+
+	console.log(items);
+		return (
+		<div className={"navigation"}>
+			<h2>{this.props.name}</h2>
+			{items}
 		</div>
-    );
-  }
+		)
+	}
 }
 
 export default MenuFooter;

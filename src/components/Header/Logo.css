@@ -1,8 +1,15 @@
-.logo
+.logo_header
 {
     position: absolute;
     top: -10px;
     left: 107px;  
+}
+
+.logo_header a
+{
+    text-decoration: none;
+    align-items: flex-end;
+    display: flex;
 }
 
 .logo_text

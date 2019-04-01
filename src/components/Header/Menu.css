@@ -6,7 +6,8 @@
 	color: #676878; 
 }
 
-.menu_items li
+.menu_items a
 {
-    margin-right: 29px;
+	text-decoration: none;
+	margin-right: 29px;
 }

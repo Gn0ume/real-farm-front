@@ -1,0 +1,40 @@
+footer
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 58px 130px 49px 140px;
+    flex: 0 0 auto;
+}
+
+.logo_box
+{
+    width: 360px;
+}
+
+.logo_footer img
+{
+    filter: grayscale(100%);
+    height: 57px;
+    width: 57px;
+}
+
+.logo_footer a
+{
+    text-decoration: none;
+    align-items: flex-end;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.logo_footer_text
+{
+    display: block;
+    font: normal 14px 'Montserrat';
+    color: #575871;
+    line-height: 25px;
+}
+
+.logo_footer
+{
+    color: yellow;
+}

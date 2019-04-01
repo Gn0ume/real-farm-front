@@ -3,17 +3,10 @@ import './Menu.css';
 
 class Menu extends React.Component {
   render() {
-    const menus = [
-        "Home",
-        "About Us",
-        "News",
-        "Documtation"
-      ]
-    return <ul className="menu_items">
-        {menus.map((value)=>{
-         return <li>{value}</li>   
-        })}
-    </ul>
+      const items = this.props.items.map((item, key) =>  <a href="#" key={key}><li>{item}</li></a>)
+      return <ul className="menu_items">
+            {items}
+        </ul>
   }
 }
 
