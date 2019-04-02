@@ -1,0 +1,40 @@
+header {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 23px;
+    position: relative;
+    box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    height: 14px;
+    padding: 26px 117px 36px 0;
+}
+
+.reg_buttons {
+    font: bold 12px 'Montserrat';
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #FFC03D;
+    height: 34px;
+    border: solid 2px #FFC03D;
+    border-radius: 22px;
+    background-color: transparent;
+    padding: 10px 15px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+button:active {
+    outline: none;
+}
+
+.reg_buttons:active, .reg_buttons:hover {
+    background: linear-gradient(180deg, #FFB347 0%, #FFCC33 100%);
+    border: none;
+    /*border-color: transparent;*/
+    padding: 10px 17px;
+    color: #fff;
+}
