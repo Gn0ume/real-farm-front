@@ -1,34 +1,29 @@
-h2
-{
+h2 {
     font: bold 12px 'Montserrat';
     text-transform: uppercase;
     color: #1F2041;
     margin-bottom: 21px;
 }
 
-.navigation
-{
+.navigation {
     width: 200px;
     display: flex;
     flex-direction: column;
 }
 
 
-.navigation a
-{
+.navigation a {
     text-decoration: none;
     margin-bottom: 20px;
     font: normal 14px 'Montserrat';
     color: #8f90a0;
 }
 
-.navigation_item
-{
+.navigation_item {
     display: flex;
     align-items: center;
 }
 
-.navigation_item img
-{
+.navigation_item img {
     margin-right: 10px;
 }

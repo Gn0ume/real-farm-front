@@ -23,7 +23,7 @@ class Footer extends React.Component {
               text: "Support",
               link: "#"
           }
-       ]
+       ];
       let about_us = [
           {
               text: "Who we are",
@@ -41,7 +41,7 @@ class Footer extends React.Component {
               text: "Investors",
               link: "#"
           }
-      ]
+      ];
       let support = [
           {
               text: "Documentation",
@@ -55,7 +55,7 @@ class Footer extends React.Component {
               text: "Get in Touch",
               link: "#"
           }
-      ]
+      ];
       let soc = [
           {
               text: "Twitter",
@@ -77,7 +77,7 @@ class Footer extends React.Component {
               link: "#",
               body: <span className={"navigation_item"}><img src={vk} />Vkontakte</span>
           }
-      ]
+      ];
     return (
         <footer>
             <div className="logo_box">

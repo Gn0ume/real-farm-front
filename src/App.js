@@ -11,7 +11,6 @@ class App extends React.Component {
             <div className={"main"}></div>
             <Footer />
         </div>
-
       );
   }
 }

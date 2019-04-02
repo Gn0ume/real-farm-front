@@ -1,6 +1,5 @@
 import React from 'react';
 import './MenuFooter.css';
-import ReactSVG from 'react-svg';
 
 class MenuFooter extends React.Component {
 	constructor(props){
