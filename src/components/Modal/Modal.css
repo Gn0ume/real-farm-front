@@ -1,0 +1,20 @@
+.modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .2);
+}
+
+.hidden {
+    display: none;
+}
+
+.modalContent {
+    position: absolute;
+    overflow: hidden;
+    top: calc(50vh - 248px);
+    left: calc(50vw - 140px);
+    z-index: 1000;
+}
