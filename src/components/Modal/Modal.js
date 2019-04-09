@@ -8,15 +8,10 @@ class Modal extends React.Component {
         return `modalWindow ${this.props.isOpenModal ? '' : 'hidden'}`
     }
 
-    isVisibleScroll() {
-        (this.props.isOpenModal) ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible'
-    }
-
     render() {
         const {contentModal} = this.props;
         const dispatch = this.props.dispatch;
         const actionCloseModal = {type: 'actionCloseModal'};
-        {this.isVisibleScroll()}
         return (
             <div id="modalWindow" className={this.isActive()}>
                 <div onClick={() => {

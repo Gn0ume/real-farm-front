@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import './Form_Register.css';
-import captcha from '../../img/captcha.png';
 import Icon from 'material-icons-react';
 
 class Form_Register extends React.Component {
@@ -17,8 +16,15 @@ class Form_Register extends React.Component {
                 user_name: null,
                 account_type: 'farmer'
             }
-        }
+        };
+        this.handleChange = this.handleChange.bind(this);
     };
+
+
+    handleChange(event) {
+        this.state.registerForm[event.target.name] = event.target.value;
+        return this.state;
+    }
 
     onButtonClick() {
         if (this.state.currentStep === 2)
@@ -38,7 +44,8 @@ class Form_Register extends React.Component {
         event.preventDefault();
     };
 
-    onSubmitButton() {
+    onSubmitButton(event) {
+        event.preventDefault();
         const dispatch = this.props.dispatch;
         const actionCloseModal = {type: 'actionCloseModal'};
         const passedUserRegister = {type: 'passedUserRegister'};
@@ -105,37 +112,16 @@ class Form_Register extends React.Component {
                             <form className="reg_step_one" action="#"
                                   onSubmit={(event) => Form_Register.onButtonFormClick(event)}>
                                 <span className="reg_name_field">e-mail</span>
-                                <input
-                                    onChange={(event) => {
-                                        this.setState({
-                                            registerForm: {
-                                                ...this.state.registerForm,
-                                                email: event.target.value
-                                            }
-                                        })
-                                    }}
+                                <input name="email"
+                                    onChange={this.handleChange}
                                     className="reg_field email" type="email" placeholder="example@real.farm"/>
                                 <span className="reg_name_field">password</span>
-                                <input
-                                    onChange={(event) => {
-                                        this.setState({
-                                            registerForm: {
-                                                ...this.state.registerForm,
-                                                pass: event.target.value
-                                            }
-                                        })
-                                    }}
+                                <input name="pass"
+                                    onChange={this.handleChange}
                                     className="reg_field password" type="password" placeholder="........"/>
                                 <span className="reg_name_field">repeat password</span>
-                                <input
-                                    onChange={(event) => {
-                                        this.setState({
-                                            registerForm: {
-                                                ...this.state.registerForm,
-                                                repeat_pass: event.target.value
-                                            }
-                                        })
-                                    }}
+                                <input name="repeat_pass"
+                                    onChange={this.handleChange}
                                     className="reg_field password" type="password" placeholder="........"/>
                                 <button
                                     onClick={() => this.onButtonClick()}
@@ -147,27 +133,13 @@ class Form_Register extends React.Component {
                         <div>
                             <form className="reg_step_one" onSubmit={(event) => Form_Register.onButtonFormClick(event)}>
                                 <span className="reg_name_field">full name</span>
-                                <input
-                                    onChange={(event) => {
-                                        this.setState({
-                                            registerForm: {
-                                                ...this.state.registerForm,
-                                                user_name: event.target.value
-                                            }
-                                        })
-                                    }}
+                                <input name="user_name"
+                                    onChange={this.handleChange}
                                     className="reg_field full_name" type="text" placeholder="Type here..."/>
                                 <span className="reg_name_field">account type</span>
-                                <select
-                                    onChange={(event) => {
-                                        this.setState({
-                                            registerForm: {
-                                                ...this.state.registerForm,
-                                                account_type: event.target.value
-                                            }
-                                        })
-                                    }}
-                                    className="reg_field select_acc_type" name="" id="">
+                                <select name="account_type"
+                                    onChange={this.handleChange}
+                                    className="reg_field select_acc_type" >
                                     <option className="option_acc_type" value="farmer">Farmer</option>
                                     <option className="option_acc_type" value="customer">Customer</option>
                                 </select>
@@ -184,15 +156,9 @@ class Form_Register extends React.Component {
                             </form>
                         </div>
                         <div>
-                            <form className="reg_step_one" action="#" onSubmit={(event => {
-                                event.preventDefault();
-                            })}>
+                            <form className="reg_step_one" action="#" onSubmit={(event) => this.onSubmitButton(event)}>
                                 <span className="reg_name_field_final">you're ready for Real Farm!</span>
-                                <button
-                                    onClick={() => {
-                                        this.onSubmitButton()
-                                    }}
-                                    className="complete_button" type="submit">
+                                <button className="complete_button" type="submit">
                                     <span>complete</span>
                                     <Icon className="material-icons md-24 md-dark" color="white" icon="done"/>
                                 </button>

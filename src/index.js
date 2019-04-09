@@ -17,18 +17,16 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'actionOpenSignInModal':
+        case 'actionOpenModal':
+            document.body.style.overflow = 'hidden';
             document.addEventListener('keyup', (event) => {
                 if (event.keyCode === 27){
                     store.dispatch({type: 'actionCloseModal'});
                 }
             });
-            return {...state, isOpenModal: true, contentModal: <Form_Sign_in/>};
-        case 'actionOpenSignInAfterReg':
-            return {...state, isOpenModal: true, contentModal: <Form_Sign_in/>, passedRegister: false};
-        case 'actionOpenRegisterModal':
-            return {...state, isOpenModal: true, contentModal: <Form_Register/>};
+            return {...state, isOpenModal: true, contentModal: action.payload, passedRegister: false};
         case 'actionCloseModal':
+            document.body.style.overflow = 'visible';
             return {...state, isOpenModal: false};
         case 'passedUserRegister':
             return {...state, passedRegister: true};

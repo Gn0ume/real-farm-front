@@ -10,9 +10,16 @@ class Form_Sign_in extends React.Component {
             email: null,
             pass: null
         }
+        this.handleChange = this.handleChange.bind(this);
     };
 
-    onSubmitButton() {
+    handleChange(event) {
+        this.state[event.target.name] = event.target.value;
+        return this.state;
+    }
+
+    onButtonFormClick(event) {
+        event.preventDefault();
         const dispatch = this.props.dispatch;
         const actionCloseModal = {type: 'actionCloseModal'};
         const passedUserSignIn = {type: 'passedUserSignIn'};
@@ -20,31 +27,23 @@ class Form_Sign_in extends React.Component {
         dispatch(actionCloseModal);
         dispatch(passedUserSignIn);
         console.log(this.state);
-    }
+    };
 
     render() {
         return (
             <div className="sign-in-box">
                 <div className="sign_in_form">
                     <img src={user} className="user_icon" alt="user"/>
-                    <form className="reg_step_one" action="#" onSubmit={(event => {
-                        event.preventDefault();
-                    })}>
+                    <form className="reg_step_one" action="#" onSubmit={(event) => this.onButtonFormClick(event)}>
                         <span className="reg_name_field">e-mail</span>
-                        <input onChange={(event) => {
-                            this.setState({...this.state, email: event.target.value})
-                        }}
+                        <input name="email"
+                            onChange={this.handleChange}
                                className="reg_field email" type="email" placeholder="example@real.farm"/>
                         <span className="reg_name_field">password</span>
-                        <input onChange={(event) => {
-                            this.setState({...this.state, pass: event.target.value})
-                        }}
+                        <input name="pass"
+                            onChange={this.handleChange}
                                className="reg_field password" type="password" placeholder="........"/>
-                        <button onClick={() => {
-                            this.onSubmitButton()
-                        }}
-                                className="sign_in_button" type="submit">sign in
-                        </button>
+                        <button className="sign_in_button" type="submit">sign in</button>
                     </form>
                 </div>
             </div>

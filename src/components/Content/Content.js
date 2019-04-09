@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './Content.css';
 import Icon from "material-icons-react";
+import Form_Sign_in from "./Form_Sign_in";
 
 class Content extends React.Component {
 
@@ -11,7 +12,7 @@ class Content extends React.Component {
 
     render() {
         const dispatch = this.props.dispatch;
-        const actionOpenSignInAfterReg = {type: 'actionOpenSignInAfterReg'};
+        const actionOpenSignInModalAfterReg = {type: 'actionOpenModal', payload: <Form_Sign_in />};
         return (
             <div className={this.isVisible()}>
                 <div className="register_final">
@@ -24,7 +25,7 @@ class Content extends React.Component {
                     <p className="reg_final_text">
                         Your Registration Was Succesfully Fulfilled!<br/>
                         Please <a href="#" onClick={() => {
-                        dispatch(actionOpenSignInAfterReg)
+                        dispatch(actionOpenSignInModalAfterReg)
                     }}>Sign in</a> for begining.
                     </p>
                 </div>
