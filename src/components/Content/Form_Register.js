@@ -34,7 +34,7 @@ class Form_Register extends React.Component {
             return this.setState({stepClass: 'slider step1', currentStep: 1});
     }
 
-    onButtonFormClick(event) {
+    static onButtonFormClick(event) {
         event.preventDefault();
     };
 
@@ -103,7 +103,7 @@ class Form_Register extends React.Component {
                     <div className={this.state.stepClass}>
                         <div>
                             <form className="reg_step_one" action="#"
-                                  onSubmit={(event) => this.onButtonFormClick(event)}>
+                                  onSubmit={(event) => Form_Register.onButtonFormClick(event)}>
                                 <span className="reg_name_field">e-mail</span>
                                 <input
                                     onChange={(event) => {
@@ -145,7 +145,7 @@ class Form_Register extends React.Component {
                             </form>
                         </div>
                         <div>
-                            <form className="reg_step_one" onSubmit={(event) => this.onButtonFormClick(event)}>
+                            <form className="reg_step_one" onSubmit={(event) => Form_Register.onButtonFormClick(event)}>
                                 <span className="reg_name_field">full name</span>
                                 <input
                                     onChange={(event) => {
@@ -180,15 +180,14 @@ class Form_Register extends React.Component {
                                    onClick={() => {
                                        this.onBackButtonClick()
                                    }}
-                                   className="button_back">Back</a>
+                                   className="button_back"><span>Back</span></a>
                             </form>
                         </div>
                         <div>
                             <form className="reg_step_one" action="#" onSubmit={(event => {
                                 event.preventDefault();
                             })}>
-                                <span className="reg_name_field">please fill captcha</span>
-                                <img className="captcha" src={captcha} alt="captcha"/>
+                                <span className="reg_name_field_final">you're ready for Real Farm!</span>
                                 <button
                                     onClick={() => {
                                         this.onSubmitButton()
@@ -200,7 +199,7 @@ class Form_Register extends React.Component {
                                 <a href="#" onClick={() => {
                                     this.onBackButtonClick()
                                 }}
-                                   className="button_back">Back</a>
+                                   className="button_back"><span>Back</span></a>
                             </form>
                         </div>
                     </div>

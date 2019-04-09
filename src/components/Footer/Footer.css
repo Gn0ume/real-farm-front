@@ -13,6 +13,7 @@ footer {
     filter: grayscale(100%);
     height: 57px;
     width: 57px;
+    z-index: -1;
 }
 
 .logo_footer a {

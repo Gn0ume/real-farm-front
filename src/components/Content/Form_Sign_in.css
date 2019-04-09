@@ -32,6 +32,7 @@
     text-transform: uppercase;
     border: none;
     margin-top: 106px;
+    cursor: pointer;
 }
 
 .reg_step_one {
@@ -51,9 +52,6 @@
     font: normal 14px 'Montserrat';
 }
 
-.email {
-    /*background: url(../img/email.png) no-repeat 12px 9px;*/
-}
 
 .email::placeholder, .full_name::placeholder {
     color: #c7c7d0;
@@ -62,7 +60,6 @@
 }
 
 .password {
-    /*background: url(../img/lock.png) no-repeat 12px 9px;*/
     line-height: 48px;
 }
 
@@ -80,8 +77,3 @@
     text-transform: uppercase;
 }
 
-.close {
-    position: absolute;
-    left: 320px;
-    top: 15px;
-}

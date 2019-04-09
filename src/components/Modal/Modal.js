@@ -8,26 +8,28 @@ class Modal extends React.Component {
         return `modalWindow ${this.props.isOpenModal ? '' : 'hidden'}`
     }
 
+    isVisibleScroll() {
+        (this.props.isOpenModal) ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible'
+    }
+
     render() {
-        const {isOpenModal, contentModal} = this.props;
+        const {contentModal} = this.props;
         const dispatch = this.props.dispatch;
         const actionCloseModal = {type: 'actionCloseModal'};
-
+        {this.isVisibleScroll()}
         return (
             <div id="modalWindow" className={this.isActive()}>
-                <div>
-                    <div className="modalContent">
-                        <div onClick={() => {
-                            dispatch(actionCloseModal)
-                        }}
-                             className="modalBackground"> </div>
-                        {contentModal}
-                    </div>
+                <div onClick={() => {
+                    dispatch(actionCloseModal)
+                }}
+                     className="modalBackground"> </div>
+                <div className="modalContent">
+                    {contentModal}
                 </div>
             </div>
-        );
+        )
     }
-}
+};
 
 const putStateToProps = (state) => {
     return {
@@ -36,4 +38,4 @@ const putStateToProps = (state) => {
     }
 };
 
-export default connect(putStateToProps)(Modal);
+export default connect(putStateToProps)(Modal)
