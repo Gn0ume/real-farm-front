@@ -1,0 +1,79 @@
+.sign-in-box {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.sign_in_form {
+    height: 496px;
+    width: 360px;
+    border-radius: 4px;
+    box-shadow: 0px 10px 20px #f4f4f6;
+    background: white;
+}
+
+.user_icon {
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 17px;
+    padding-top: 61px;
+}
+
+.sign_in_button {
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    border-radius: 22px;
+    position: relative;
+    height: 44px;
+    width: 280px;
+    font: bold 12px 'Montserrat';
+    color: #FFF;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 106px;
+    cursor: pointer;
+}
+
+.reg_step_one {
+    margin: 0 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.reg_field {
+    height: 44px;
+    width: 280px;
+    margin-bottom: 20px;
+    padding-left: 44px;
+    border: solid 1px #c7c7d0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font: normal 14px 'Montserrat';
+}
+
+
+.email::placeholder, .full_name::placeholder {
+    color: #c7c7d0;
+    margin-left: 40px;
+    font: normal 14px 'Montserrat';
+}
+
+.password {
+    line-height: 48px;
+}
+
+.password::placeholder {
+
+    color: #c7c7d0;
+    margin-left: 40px;
+    font: normal 48px 'Montserrat';
+}
+
+.reg_name_field {
+    font: bold 12px 'Montserrat';
+    color: #1F2041;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+

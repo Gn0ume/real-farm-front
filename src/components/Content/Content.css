@@ -1,0 +1,44 @@
+.register_final {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.reg_final_box {
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.circle_done {
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+}
+
+.reg_final_phrase {
+    font: bold 36px 'Quicksand';
+    color: #1F2041;
+    margin-left: 13px;
+}
+
+.reg_final_text {
+    font: normal 19px 'Quicksand';
+    color: #8f90a0;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.reg_final_text a {
+    text-decoration: none;
+    color: #66D2EA;
+}
+
+.hidden {
+    display: none;
+}

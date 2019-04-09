@@ -27,14 +27,9 @@ header {
     cursor: pointer;
 }
 
-button:active {
-    outline: none;
-}
-
 .reg_buttons:active, .reg_buttons:hover {
     background: linear-gradient(180deg, #FFB347 0%, #FFCC33 100%);
     border: none;
-    /*border-color: transparent;*/
     padding: 10px 17px;
     color: #fff;
-}
+ }
