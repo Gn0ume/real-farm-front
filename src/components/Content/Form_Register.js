@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './Form_Register.css';
 import Icon from 'material-icons-react';
+import {createUserMutation} from "../queries/queries";
+import {compose, withApollo, graphql} from "react-apollo";
 
 class Form_Register extends React.Component {
     constructor(props) {
@@ -14,7 +16,7 @@ class Form_Register extends React.Component {
                 pass: null,
                 repeat_pass: null,
                 user_name: null,
-                account_type: 'farmer'
+                account_type: 'FARMER'
             }
         };
         this.handleChange = this.handleChange.bind(this);
@@ -53,6 +55,15 @@ class Form_Register extends React.Component {
         dispatch(actionCloseModal);
         dispatch(passedUserRegister);
         console.log(this.state.registerForm);
+
+        this.props.createUserMutation({
+            variables: {
+                firstName: this.state.registerForm.user_name,
+                email: this.state.registerForm.email,
+                password: this.state.registerForm.pass,
+                type: this.state.registerForm.account_type
+            }
+        });
     }
 
     getCircleStyle(elStep) {
@@ -65,6 +76,7 @@ class Form_Register extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <div className="sign-in-box">
                 <div className="sign_in_form">
@@ -140,8 +152,8 @@ class Form_Register extends React.Component {
                                 <select name="account_type"
                                     onChange={this.handleChange}
                                     className="reg_field select_acc_type" >
-                                    <option className="option_acc_type" value="farmer">Farmer</option>
-                                    <option className="option_acc_type" value="customer">Customer</option>
+                                    <option className="option_acc_type" value="FARMER">FARMER</option>
+                                    <option className="option_acc_type" value="BUYER">CUSTOMER</option>
                                 </select>
                                 <button
                                     onClick={() => this.onButtonClick()}
@@ -182,4 +194,7 @@ const putStateToProps = (state) => {
     }
 };
 
-export default connect(putStateToProps)(Form_Register);
+export default withApollo(compose(
+    connect(putStateToProps),
+    graphql(createUserMutation, {name: 'createUserMutation'})
+)(Form_Register));
