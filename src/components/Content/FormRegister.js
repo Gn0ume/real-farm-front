@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './Form_Register.css';
+import './FormRegister.css';
 import Icon from 'material-icons-react';
 import {createUserMutation} from "../queries/queries";
 import {compose, withApollo, graphql} from "react-apollo";

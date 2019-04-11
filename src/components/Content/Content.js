@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './Content.css';
 import Icon from "material-icons-react";
-import FormSignIn from "./Form_Sign_in";
+import FormSignIn from "./FormSignIn";
 
 class Content extends React.Component {
 

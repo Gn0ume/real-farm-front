@@ -3,8 +3,8 @@ import './Header.css';
 import Logo from './Logo';
 import Menu from './Menu';
 import {connect} from 'react-redux';
-import FormSignIn from "../Content/Form_Sign_in";
-import FormRegister from "../Content/Form_Register";
+import FormSignIn from "../Content/FormSignIn";
+import FormRegister from "../Content/FormRegister";
 
 class Header extends React.Component {
     render() {
