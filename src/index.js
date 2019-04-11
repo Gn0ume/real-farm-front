@@ -5,8 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux'
-import Form_Sign_in from './components/Content/Form_Sign_in';
-import Form_Register from './components/Content/Form_Register';
 
 const initialState = {
     isOpenModal: false,

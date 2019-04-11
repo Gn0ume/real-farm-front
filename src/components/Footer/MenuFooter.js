@@ -2,10 +2,6 @@ import React from 'react';
 import './MenuFooter.css';
 
 class MenuFooter extends React.Component {
-	constructor(props){
-		super(props);
-	}
-
 	render() {
 		const items = this.props.items.map((item, key) => <a href={item.link} key={key}><span>{item.body ? item.body : item.text}</span></a>);
 

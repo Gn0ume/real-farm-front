@@ -5,7 +5,7 @@ import Icon from 'material-icons-react';
 import {createUserMutation} from "../queries/queries";
 import {compose, withApollo, graphql} from "react-apollo";
 
-class Form_Register extends React.Component {
+class FormRegister extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -54,7 +54,7 @@ class Form_Register extends React.Component {
 
         dispatch(actionCloseModal);
         dispatch(passedUserRegister);
-        console.log(this.state.registerForm);
+        console.log(this.state);
 
         this.props.createUserMutation({
             variables: {
@@ -76,7 +76,6 @@ class Form_Register extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div className="sign-in-box">
                 <div className="sign_in_form">
@@ -122,7 +121,7 @@ class Form_Register extends React.Component {
                     <div className={this.state.stepClass}>
                         <div>
                             <form className="reg_step_one" action="#"
-                                  onSubmit={(event) => Form_Register.onButtonFormClick(event)}>
+                                  onSubmit={(event) => FormRegister.onButtonFormClick(event)}>
                                 <span className="reg_name_field">e-mail</span>
                                 <input name="email"
                                     onChange={this.handleChange}
@@ -143,7 +142,7 @@ class Form_Register extends React.Component {
                             </form>
                         </div>
                         <div>
-                            <form className="reg_step_one" onSubmit={(event) => Form_Register.onButtonFormClick(event)}>
+                            <form className="reg_step_one" onSubmit={(event) => FormRegister.onButtonFormClick(event)}>
                                 <span className="reg_name_field">full name</span>
                                 <input name="user_name"
                                     onChange={this.handleChange}
@@ -197,4 +196,4 @@ const putStateToProps = (state) => {
 export default withApollo(compose(
     connect(putStateToProps),
     graphql(createUserMutation, {name: 'createUserMutation'})
-)(Form_Register));
+)(FormRegister));
