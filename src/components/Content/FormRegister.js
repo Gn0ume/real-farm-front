@@ -24,7 +24,8 @@ class FormRegister extends React.Component {
 
 
     handleChange(event) {
-        this.state.registerForm[event.target.name] = event.target.value;
+        const {name, value} = event.target;
+        this.setState({registerForm: {...this.state.registerForm, [name]: value}});
         return this.state;
     }
 
@@ -64,6 +65,20 @@ class FormRegister extends React.Component {
                 type: this.state.registerForm.account_type
             }
         });
+
+        document.getElementById('form-step-1').reset();
+        document.getElementById('form-step-2').reset();
+
+        this.setState({...this.state,
+            stepClass: 'slider step1',
+            currentStep: 1,
+            registerForm: {email: null,
+                    pass: null,
+                    repeat_pass: null,
+                    user_name: null,
+                    account_type: 'FARMER'
+                }
+            });
     }
 
     getCircleStyle(elStep) {
@@ -120,7 +135,7 @@ class FormRegister extends React.Component {
                     </div>
                     <div className={this.state.stepClass}>
                         <div>
-                            <form className="reg_step_one" action="#"
+                            <form id="form-step-1" className="reg_step_one" action="#"
                                   onSubmit={(event) => FormRegister.onButtonFormClick(event)}>
                                 <span className="reg_name_field">e-mail</span>
                                 <input name="email"
@@ -142,7 +157,7 @@ class FormRegister extends React.Component {
                             </form>
                         </div>
                         <div>
-                            <form className="reg_step_one" onSubmit={(event) => FormRegister.onButtonFormClick(event)}>
+                            <form id="form-step-2" className="reg_step_one" onSubmit={(event) => FormRegister.onButtonFormClick(event)}>
                                 <span className="reg_name_field">full name</span>
                                 <input name="user_name"
                                     onChange={this.handleChange}
