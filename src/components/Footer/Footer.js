@@ -60,22 +60,22 @@ class Footer extends React.Component {
           {
               text: "Twitter",
               link: "#",
-              body: <span className={"navigation_item"}><img src={twit} />Twitter</span>
+              body: <span className={"navigation_item"}><img src={twit} alt="twitter"/>Twitter</span>
           },
           {
               text: "Facebook",
               link: "#",
-              body: <span className={"navigation_item"}><img src={fb} />Facebook</span>
+              body: <span className={"navigation_item"}><img src={fb} alt="facebook"/>Facebook</span>
           },
           {
               text: "Instagram",
               link: "#",
-              body: <span className={"navigation_item"}><img src={insta} />Instagram</span>
+              body: <span className={"navigation_item"}><img src={insta} alt="instagram"/>Instagram</span>
           },
           {
               text: "Vkontakte",
               link: "#",
-              body: <span className={"navigation_item"}><img src={vk} />Vkontakte</span>
+              body: <span className={"navigation_item"}><img src={vk} alt="vkontakte"/>Vkontakte</span>
           }
       ];
     return (

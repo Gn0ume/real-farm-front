@@ -3,14 +3,14 @@ import './Header.css';
 import Logo from './Logo';
 import Menu from './Menu';
 import {connect} from 'react-redux';
-import Form_Sign_in from "../Content/Form_Sign_in";
-import Form_Register from "../Content/Form_Register";
+import FormSignIn from "../Content/FormSignIn";
+import FormRegister from "../Content/FormRegister";
 
 class Header extends React.Component {
     render() {
         const dispatch = this.props.dispatch;
-        const actionOpenSignInModal = {type: 'actionOpenModal', payload: <Form_Sign_in />};
-        const actionOpenRegisterModal = {type: 'actionOpenModal', payload: <Form_Register />};
+        const actionOpenSignInModal = {type: 'actionOpenModal', payload: <FormSignIn />};
+        const actionOpenRegisterModal = {type: 'actionOpenModal', payload: <FormRegister />};
 
         return (
             <header>

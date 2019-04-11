@@ -1,20 +1,21 @@
 import React from 'react';
-import './Form_Sign_in.css';
+import './FormSignIn.css';
 import user from "../../svg/user.svg";
 import {connect} from 'react-redux';
 
-class Form_Sign_in extends React.Component {
+class FormSignIn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             email: null,
             pass: null
-        }
+        };
         this.handleChange = this.handleChange.bind(this);
     };
 
     handleChange(event) {
-        this.state[event.target.name] = event.target.value;
+        const {name, value} = event.target;
+        this.setState({...this.state, [name]: value});
         return this.state;
     }
 
@@ -58,4 +59,4 @@ const putStateToProps = (state) => {
     }
 };
 
-export default connect(putStateToProps)(Form_Sign_in);
+export default connect(putStateToProps)(FormSignIn);
