@@ -56,10 +56,11 @@ class FormRegister extends React.Component {
         dispatch(actionCloseModal);
         dispatch(passedUserRegister);
         console.log(this.state);
+        console.log(this.props);
 
         this.props.createUserMutation({
             variables: {
-                firstName: this.state.registerForm.user_name,
+                username: this.state.registerForm.user_name,
                 email: this.state.registerForm.email,
                 password: this.state.registerForm.pass,
                 type: this.state.registerForm.account_type
@@ -158,7 +159,7 @@ class FormRegister extends React.Component {
                         </div>
                         <div>
                             <form id="form-step-2" className="reg_step_one" onSubmit={(event) => FormRegister.onButtonFormClick(event)}>
-                                <span className="reg_name_field">full name</span>
+                                <span className="reg_name_field">user name</span>
                                 <input name="user_name"
                                     onChange={this.handleChange}
                                     className="reg_field full_name" type="text" placeholder="Type here..."/>

@@ -10,18 +10,18 @@ import config from './config';
 
 const client = new ApolloClient({
     uri: config.graphQlEndpoint,
-    onError: ({ graphQLErrors, response }) => {
-        response.errors = null;
-        graphQLErrors.map( error => {
-            switch (error.code) {
-                case 409:
-                    alert('Такой ресурс уже существует');
-                    break;
-                default:
-                    alert('Произошла неизвестная ошибка! Извините!');
-            }
-        })
-    }
+  //  onError: ({ graphQLErrors, response }) => {
+        // response.errors = null;
+        // graphQLErrors.map( error => {
+        //     switch (error.code) {
+        //         case 409:
+        //             alert('Такой ресурс уже существует');
+        //             break;
+        //         default:
+        //             alert('Произошла неизвестная ошибка! Извините!');
+        //     }
+      //  })
+   // }
 });
 
 class App extends React.Component {
