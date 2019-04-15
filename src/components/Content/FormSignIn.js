@@ -2,6 +2,8 @@ import React from 'react';
 import './FormSignIn.css';
 import user from "../../svg/user.svg";
 import {connect} from 'react-redux';
+import {loginUserMutation} from "../queries/queries";
+import {compose, withApollo} from "react-apollo";
 
 class FormSignIn extends React.Component {
     constructor(props) {
@@ -28,6 +30,23 @@ class FormSignIn extends React.Component {
         dispatch(actionCloseModal);
         dispatch(passedUserSignIn);
         console.log(this.state);
+
+        this.props.client.query ({
+            query: loginUserMutation,
+            variables: {
+                email: this.state.email,
+                password: this.state.pass
+            }
+        })
+            .then(loginType => {
+                let loginParam = loginType.data.login;
+                if (loginParam.loginSuccess) {
+                    localStorage.setItem('token', loginParam.token);
+                    alert('Вы успешно авторизовались!')
+                } else {
+                    alert('Неверный логин или пароль');
+                }
+            });
     };
 
     render() {
@@ -59,4 +78,4 @@ const putStateToProps = (state) => {
     }
 };
 
-export default connect(putStateToProps)(FormSignIn);
+export default withApollo(compose(connect(putStateToProps))(FormSignIn));

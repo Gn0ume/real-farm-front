@@ -3,13 +3,13 @@ import {gql} from 'apollo-boost';
 
 const createUserMutation = gql`
     mutation(
-        $firstName: String!
+        $username: String!
         $email: GraphQLEmail!
         $password: String!
         $type: UserType
         ) {
             createUser(
-                firstName: $firstName
+                username: $username
                 email: $email
                 password: $password
                 type: $type) {
@@ -19,4 +19,20 @@ const createUserMutation = gql`
     }
 `;
 
-export {createUserMutation}
+const loginUserMutation = gql`
+    query (
+    $email: GraphQLEmail!
+    $password: String!
+    )
+         {
+            login(
+                email: $email
+                password: $password
+                ) {
+                    loginSuccess
+                    token
+                  }
+            }
+`;
+
+export {createUserMutation, loginUserMutation}
