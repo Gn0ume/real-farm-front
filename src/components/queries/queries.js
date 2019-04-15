@@ -21,9 +21,10 @@ const createUserMutation = gql`
 
 const loginUserMutation = gql`
     query (
-        $email: GraphQLEmail!
-        $password: String!
-        ) {
+    $email: GraphQLEmail!
+    $password: String!
+    )
+         {
             login(
                 email: $email
                 password: $password

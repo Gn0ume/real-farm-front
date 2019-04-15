@@ -22,7 +22,7 @@ class Header extends React.Component {
                             dispatch(actionOpenSignInModal)
                         }}
                         id="header_sign_in"
-                        className="reg_buttons">sing in
+                        className="reg_buttons">sign in
                     </button>
                     <button
                         onClick={() => {
