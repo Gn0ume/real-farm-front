@@ -35,4 +35,19 @@ const loginUserMutation = gql`
             }
 `;
 
-export {createUserMutation, loginUserMutation}
+const queryMe = gql`
+    query {
+        me {
+            id
+            username
+            firstName
+            lastName
+            fullName
+            type
+            email
+            avatarUrl  
+        }
+    }
+`;
+
+export {loginUserMutation, createUserMutation, queryMe}

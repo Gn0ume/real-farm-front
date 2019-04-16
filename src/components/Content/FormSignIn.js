@@ -42,7 +42,8 @@ class FormSignIn extends React.Component {
                 let loginParam = loginType.data.login;
                 if (loginParam.loginSuccess) {
                     localStorage.setItem('token', loginParam.token);
-                    alert('Вы успешно авторизовались!')
+                    alert('Вы успешно авторизовались!');
+                    window.location.reload();
                 } else {
                     alert('Неверный логин или пароль');
                 }

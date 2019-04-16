@@ -4,47 +4,45 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Modal from './components/Modal/Modal';
 import Content from './components/Content/Content';
-import {ApolloProvider} from 'react-apollo';
-import ApolloClient from 'apollo-boost';
-import config from './config';
-
-const client = new ApolloClient({
-    uri: config.graphQlEndpoint,
-    request: async operation => {
-            const token = await localStorage.getItem('token');
-            operation.setContext({
-                headers: {
-                    authorization: token ? `Bearer ${token}` : ''
-                }
-            });
-        },
-   onError: ({ graphQLErrors, response }) => {
-       response.errors = null;
-        graphQLErrors.map( error => {
-            switch (error.code) {
-                case 409:
-                    alert('Такой ресурс уже существует');
-                    break;
-                default:
-                    alert('Произошла неизвестная ошибка! Извините!');
-            }
-       })
-   }
-});
+import {compose, withApollo} from 'react-apollo';
+import {queryMe} from "./components/queries/queries";
+import {connect} from "react-redux";
+import TOKEN from './constants';
 
 class App extends React.Component {
+    getMeInfo() {
+        if (TOKEN) {
+            this.props.client.query({
+                query: queryMe
+            })
+                .then(data => {
+                    const dispatch = this.props.dispatch;
+                    const infoAuthUser = {type: 'infoAuthUser', payload: data.data.me};
+                    dispatch(infoAuthUser);
+                })
+        }
+    };
+
     render() {
+        const userInfo = this.getMeInfo();
         return (
-            <ApolloProvider client={client}>
                 <div className="main-page">
+                    {userInfo}
                     <Header/>
                     <Content/>
                     <Modal/>
                     <Footer/>
                 </div>
-            </ApolloProvider>
         );
     }
 }
 
-export default App;
+const putStateToProps = (state) => {
+    return {
+        isOpenModal: state.isOpenModal,
+        passedUserSignIn: state.passedUserSignIn,
+        authUser: state.authUser
+    }
+};
+
+export default withApollo(compose(connect(putStateToProps))(App));
