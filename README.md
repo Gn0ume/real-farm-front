@@ -70,6 +70,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ### config.js Configuration File
 
 This file is in a root of the project and contains:
+```
 export default {
     graphQlEndpoint: 'http://188.225.79.210:5000/graphql'
 }
+```

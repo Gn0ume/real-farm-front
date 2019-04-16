@@ -1,0 +1,84 @@
+.auth-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.top-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
+    position: absolute;
+    top: -40px;
+    width: 1391px;
+    left: -620px;
+}
+
+.acc_type {
+    font: bold 14px 'Montserrat';
+    color: #676878;
+    margin-right: 17px;
+    margin-left: 29px;
+}
+
+.element_after {
+    content: '';
+    height: 30px;
+    width: 1px;
+    background: rgba(31, 32, 65, 0.1);
+}
+
+.user-box {
+    width: 266px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 109px;
+    margin-left: 5px;
+}
+
+.username {
+    font: normal 14px 'Montserrat';
+    color: #676878;
+    margin-right: 20px;
+    margin-left: 3px;
+    width: 100px;
+}
+
+
+.avatar {
+    height: 34px;
+    width: 34px;
+    border-radius: 24px;
+    margin: 0 20px 10px 20px;
+}
+
+.bottom-menu {
+    display: flex;
+    margin-top: 22px;
+    align-items: center;
+}
+
+.rating-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin-left: 12px;
+
+}
+
+.user-menu, .rating {
+    font: normal 18px 'Montserrat';
+    color: #676878;
+}
+
+.rating-number {
+    font: bold 18px 'Montserrat';
+    color: #676878;
+    margin-left: 5px;
+    margin-right: 5px;
+}

@@ -55,8 +55,7 @@ class FormRegister extends React.Component {
 
         dispatch(actionCloseModal);
         dispatch(passedUserRegister);
-        console.log(this.state);
-        console.log(this.props);
+        console.log(this.state.registerForm);
 
         this.props.createUserMutation({
             variables: {

@@ -4,6 +4,14 @@
     list-style: none;
 }
 
+.menu-items-font-14 {
+    font: normal 14px 'Montserrat';
+}
+
+.menu-items-font-18 {
+    font: normal 18px 'Montserrat';
+}
+
 .menu_items a {
     text-decoration: none;
     margin-right: 29px;

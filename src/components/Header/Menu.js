@@ -5,7 +5,7 @@ class Menu extends React.Component {
   render() {
       const items = this.props.items.map((item, key) =>  <a href="#" key={key}><li>{item}</li></a>)
       return (
-          <ul className="menu_items">
+          <ul className={this.props.font_size_class}>
             {items}
           </ul>
       )

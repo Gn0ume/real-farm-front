@@ -4,13 +4,20 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux';
+import TOKEN from './constants';
+import ApolloClient from "apollo-boost";
+import config from "./config";
+import {ApolloProvider} from "react-apollo";
 
 const initialState = {
     isOpenModal: false,
     contentModal: null,
     passedRegister: false,
-    passedUserSignIn: false
+    passedUserSignIn: !!(TOKEN),
+    authUser: {
+        id: " "
+    }
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,12 +37,39 @@ const reducer = (state = initialState, action) => {
             return {...state, passedRegister: true};
         case 'passedUserSignIn':
             return {...state, passedUserSignIn: true};
+        case 'infoAuthUser':
+            return {...state, authUser: action.payload}
+
     }
     return state;
 };
 
 const store = createStore(reducer);
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
+const client = new ApolloClient({
+    uri: config.graphQlEndpoint,
+    request: async operation => {
+        const token = await localStorage.getItem('token');
+        operation.setContext({
+            headers: {
+                authorization: token ? `Bearer ${token}` : ''
+            }
+        });
+    },
+    onError: ({ graphQLErrors, response }) => {
+        response.errors = null;
+        graphQLErrors.map( error => {
+            switch (error.code) {
+                case 409:
+                    alert('Такой ресурс уже существует');
+                    break;
+                default:
+                    alert('Произошла неизвестная ошибка! Извините!');
+            }
+        })
+    }
+});
+
+ReactDOM.render( <ApolloProvider client={client}><Provider store={store}><App/></Provider></ApolloProvider>, document.getElementById('root'));
 
 serviceWorker.unregister();
