@@ -14,12 +14,12 @@ class AuthPanel extends React.Component {
         return (
             <div className="auth-panel">
                 <div className="top-menu">
-                    <Menu font_size_class={"menu_items menu-items-font-14"} items={["Home", "About Us", "News", "Documentation"]}/>
+                    <Menu font_size_class={"menu_items menu-items-font-14"} items={["Catalog", "Home", "News", "Documents"]}/>
                     <span className="acc_type">{this.props.authUser.type}</span>
                     <div className="element_after"></div>
                     <div className="user-box">
                     <Icon className="material-icons md-24 md-dark" color="grey" icon="expand_more"/>
-                    <span className="username">{this.props.authUser.username}</span>
+                    <span className="username">{this.props.authUser.fullName}</span>
                     <Icon className="material-icons md-24 md-dark" color="grey" icon="chat"/>
                     <img src={this.chooseAvatar()} alt="avatar" className="avatar"/>
                     </div>
