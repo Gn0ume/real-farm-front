@@ -12,7 +12,11 @@ class Footer extends React.Component {
   render() {
       let nav = [
           {
-              text: "About Us",
+              text: "Catalog",
+              link: "#"
+          },
+          {
+              text: "Home",
               link: "#"
           },
           {
@@ -20,7 +24,7 @@ class Footer extends React.Component {
               link: "#"
           },
           {
-              text: "Support",
+              text: "Documents",
               link: "#"
           }
        ];
@@ -34,25 +38,7 @@ class Footer extends React.Component {
               link: "#"
           },
           {
-              text: "Careers",
-              link: "#"
-          },
-          {
-              text: "Investors",
-              link: "#"
-          }
-      ];
-      let support = [
-          {
-              text: "Documentation",
-              link: "#"
-          },
-          {
-              text: "Community",
-              link: "#"
-          },
-          {
-              text: "Get in Touch",
+              text: "For Investors",
               link: "#"
           }
       ];
@@ -87,7 +73,6 @@ class Footer extends React.Component {
             </div>
             <MenuFooter name={"Navigation"} items={nav} />
             <MenuFooter name={"About Us"} items={about_us} />
-            <MenuFooter name={"Support"} items={support} />
             <MenuFooter name={"Social"} items={soc} />
         </footer>
     );

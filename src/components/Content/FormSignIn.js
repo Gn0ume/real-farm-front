@@ -28,7 +28,6 @@ class FormSignIn extends React.Component {
         const passedUserSignIn = {type: 'passedUserSignIn'};
 
         dispatch(actionCloseModal);
-        dispatch(passedUserSignIn);
         console.log(this.state);
 
         this.props.client.query ({
@@ -44,10 +43,13 @@ class FormSignIn extends React.Component {
                     localStorage.setItem('token', loginParam.token);
                     alert('Вы успешно авторизовались!');
                     window.location.reload();
+                    dispatch(passedUserSignIn);
                 } else {
                     alert('Неверный логин или пароль');
                 }
             });
+
+
     };
 
     render() {

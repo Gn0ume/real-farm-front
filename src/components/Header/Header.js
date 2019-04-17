@@ -15,7 +15,7 @@ class Header extends React.Component {
     };
 
     chooseMenu() {
-        const MenuForAll = <Menu font_size_class={"menu_items menu-items-font-14"} items={["Home", "About Us", "News", "Documentation"]}/>;
+        const MenuForAll = <Menu font_size_class={"menu_items menu-items-font-14"} items={["Catalog", "Home", "News", "Documents"]}/>;
         return (this.props.passedUserSignIn ? <AuthPanel /> : MenuForAll)
     };
 
