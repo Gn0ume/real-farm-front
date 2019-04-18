@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import TOKEN from './constants';
+import {TOKEN} from './constants';
 import ApolloClient from "apollo-boost";
 import config from "./config";
 import {ApolloProvider} from "react-apollo";
