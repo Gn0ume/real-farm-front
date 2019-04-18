@@ -3,11 +3,20 @@ import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Modal from './components/Modal/Modal';
-import Content from './components/Content/Content';
 import {compose, withApollo} from 'react-apollo';
 import {queryMe} from "./components/queries/queries";
 import {connect} from "react-redux";
-import TOKEN from './constants';
+import {TOKEN} from './constants';
+import {BrowserRouter, Route} from "react-router-dom";
+import Catalog from "./components/Content/Navigation/Catalog";
+import Documents from "./components/Content/Navigation/Documents";
+import News from "./components/Content/Navigation/News";
+import Home from "./components/Content/Navigation/Home";
+import WhoWeAre from "./components/Content/AboutUs/WhoWeAre";
+import OurTeam from "./components/Content/AboutUs/OurTeam";
+import ForInvestors from "./components/Content/AboutUs/ForInvestors";
+import MyFarms from "./components/Content/Profiles/MyFarms";
+import Profile from "./components/Content/Profiles/Profile";
 
 class App extends React.Component {
     getMeInfo() {
@@ -26,13 +35,25 @@ class App extends React.Component {
     render() {
         const userInfo = this.getMeInfo();
         return (
+            <BrowserRouter>
                 <div className="main-page">
                     {userInfo}
                     <Header/>
-                    <Content/>
+                    <div className="main-content">
+                        <Route path="/catalog" component={Catalog}></Route>
+                        <Route exact path="/" component={Home}></Route>
+                        <Route path="/news" component={News}></Route>
+                        <Route path="/documentation" component={Documents}></Route>
+                        <Route path="/who_we_are" component={WhoWeAre}></Route>
+                        <Route path="/our_team" component={OurTeam}></Route>
+                        <Route path="/for_investors" component={ForInvestors}></Route>
+                        <Route path="/farmer" component={MyFarms}></Route>
+                        <Route path="/profile" component={Profile}></Route>
+                    </div>
                     <Modal/>
                     <Footer/>
                 </div>
+            </BrowserRouter>
         );
     }
 }

@@ -7,6 +7,7 @@ import FormSignIn from "../Content/FormSignIn";
 import FormRegister from "../Content/FormRegister";
 import {compose, withApollo} from "react-apollo";
 import AuthPanel from "./AuthPanel";
+import {menuHeader} from "../../constants";
 
 
 class Header extends React.Component {
@@ -15,7 +16,7 @@ class Header extends React.Component {
     };
 
     chooseMenu() {
-        const MenuForAll = <Menu font_size_class={"menu_items menu-items-font-14"} items={["Catalog", "Home", "News", "Documents"]}/>;
+        const MenuForAll = <Menu font_size_class={"menu_items menu-items-font-14"} items={menuHeader}/>;
         return (this.props.passedUserSignIn ? <AuthPanel /> : MenuForAll)
     };
 

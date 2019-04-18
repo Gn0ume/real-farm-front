@@ -13,33 +13,33 @@ class Footer extends React.Component {
       let nav = [
           {
               text: "Catalog",
-              link: "#"
+              link: "/catalog"
           },
           {
               text: "Home",
-              link: "#"
+              link: "/"
           },
           {
               text: "News",
-              link: "#"
+              link: "/news"
           },
           {
               text: "Documents",
-              link: "#"
+              link: "/documentation"
           }
        ];
       let about_us = [
           {
               text: "Who we are",
-              link: "#"
+              link: "/who_we_are"
           },
           {
               text: "Our team",
-              link: "#"
+              link: "/our_team"
           },
           {
               text: "For Investors",
-              link: "#"
+              link: "/for_investors"
           }
       ];
       let soc = [
