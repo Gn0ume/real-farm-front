@@ -1,5 +1,6 @@
 .modalWindow {
     position: fixed;
+    z-index: 10;
 }
 
 .modalBackground {
@@ -19,6 +20,6 @@
     position: absolute;
     overflow: hidden;
     top: calc(50vh - 248px);
-    left: calc(50vw - 140px);
+    left: calc(50vw - 140px - (100vw - 1440px) / 2);
     z-index: 1000;
 }

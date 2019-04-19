@@ -7,6 +7,7 @@ header {
 }
 
 .no-shadow {
+    margin-top: 47px;
     box-shadow: none;
 }
 
