@@ -1,7 +1,6 @@
 .sign-in-box {
     display: flex;
     position: relative;
-    width: 100%;
     justify-content: center;
     overflow: hidden;
 }
