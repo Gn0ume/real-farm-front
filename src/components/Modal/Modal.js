@@ -6,7 +6,11 @@ class Modal extends React.Component {
 
     isActive() {
         return `modalWindow ${this.props.isOpenModal ? '' : 'hidden'}`
-    }
+    };
+
+    static preventBubbling(e) {
+        e.stopPropagation();
+    };
 
     render() {
         const {contentModal} = this.props;
@@ -14,12 +18,13 @@ class Modal extends React.Component {
         const actionCloseModal = {type: 'actionCloseModal'};
         return (
             <div id="modalWindow" className={this.isActive()}>
-                <div onClick={() => {
+                <div className="modalBackground"> </div>
+                <div className="modalContent" onClick={() => {
                     dispatch(actionCloseModal)
-                }}
-                     className="modalBackground"> </div>
-                <div className="modalContent">
-                    {contentModal}
+                }}>
+                    <div className="contentContainer" onClick={e => Modal.preventBubbling(e)}>
+                        {contentModal}
+                    </div>
                 </div>
             </div>
         )
