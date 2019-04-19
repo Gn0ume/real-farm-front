@@ -17,9 +17,14 @@
 }
 
 .modalContent {
-    position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
     overflow: hidden;
-    top: calc(50vh - 248px);
-    left: calc(50vw - 140px - (100vw - 1440px) / 2);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1000;
 }
