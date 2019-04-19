@@ -46,6 +46,8 @@ class FormSignIn extends React.Component {
                     dispatch(passedUserSignIn);
                 } else {
                     alert('Неверный логин или пароль');
+                    document.getElementById('password').value = '';
+
                 }
             });
 
@@ -57,13 +59,13 @@ class FormSignIn extends React.Component {
             <div className="sign-in-box">
                 <div className="sign_in_form">
                     <img src={user} className="user_icon" alt="user"/>
-                    <form className="reg_step_one" action="#" onSubmit={(event) => this.onButtonFormClick(event)}>
+                    <form id="sign-in-form" className="reg_step_one" action="#" onSubmit={(event) => this.onButtonFormClick(event)}>
                         <span className="reg_name_field">e-mail</span>
                         <input name="email"
                             onChange={this.handleChange}
                                className="reg_field email" type="email" placeholder="example@real.farm"/>
                         <span className="reg_name_field">password</span>
-                        <input name="pass"
+                        <input id="password" name="pass"
                             onChange={this.handleChange}
                                className="reg_field password" type="password" placeholder="........"/>
                         <button className="sign_in_button" type="submit">sign in</button>
