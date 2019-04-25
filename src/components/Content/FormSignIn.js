@@ -45,7 +45,6 @@ class FormSignIn extends React.Component {
                 if (loginParam.loginSuccess) {
                     localStorage.setItem('token', loginParam.token);
                     localStorage.setItem('user_type', loginParam.user.type);
-                    alert('Вы успешно авторизовались!');
                     if (loginParam.user.type === "FARMER")
                         this.props.history.push('/farmer');
                     window.location.reload();
