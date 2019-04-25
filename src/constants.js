@@ -17,4 +17,6 @@ export const menuHeader = [
     }
 ];
 
-export const TOKEN = localStorage.getItem('token');
+export const getToken = () => localStorage.getItem('token');
+
+export const getUserType = () => localStorage.getItem('user_type');

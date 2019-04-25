@@ -4,6 +4,7 @@
     background: #6FCF97;
     position: relative;
     overflow: hidden;
+    border-radius: 4px 4px 0 0;
 }
 
 #slider {

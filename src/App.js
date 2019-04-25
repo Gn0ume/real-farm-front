@@ -6,8 +6,8 @@ import Modal from './components/Modal/Modal';
 import {compose, withApollo} from 'react-apollo';
 import {queryMe} from "./components/queries/queries";
 import {connect} from "react-redux";
-import {TOKEN} from './constants';
-import {BrowserRouter, Route} from "react-router-dom";
+import {getToken, getUserType} from './constants';
+import {BrowserRouter, Redirect, Route} from "react-router-dom";
 import Catalog from "./components/Content/Navigation/Catalog";
 import Documents from "./components/Content/Navigation/Documents";
 import News from "./components/Content/Navigation/News";
@@ -20,7 +20,7 @@ import Profile from "./components/Content/Profiles/Profile";
 
 class App extends React.Component {
     getMeInfo() {
-        if (TOKEN) {
+        if (getToken()) {
             this.props.client.query({
                 query: queryMe
             })
@@ -32,9 +32,17 @@ class App extends React.Component {
         }
     };
 
+    static isFarmer() {
+        return (getToken() && getUserType() === "FARMER") ? (
+            <MyFarms />
+        ) : (
+            <Redirect to="/"/>
+        )
+    }
+
     render() {
         const userInfo = this.getMeInfo();
-       return (
+        return (
             <BrowserRouter>
                 <div className="main-page">
                     {userInfo}
@@ -47,7 +55,7 @@ class App extends React.Component {
                         <Route path="/who_we_are" component={WhoWeAre}/>
                         <Route path="/our_team" component={OurTeam}/>
                         <Route path="/for_investors" component={ForInvestors}/>
-                        <Route path="/farmer" component={MyFarms}/>
+                        <Route path="/farmer" render={() => (App.isFarmer())}/>
                         <Route path="/profile" component={Profile}/>
                     </div>
                     <Modal/>

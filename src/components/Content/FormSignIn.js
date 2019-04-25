@@ -4,7 +4,8 @@ import user from "../../svg/user.svg";
 import {connect} from 'react-redux';
 import {loginUserMutation} from "../queries/queries";
 import {compose, withApollo} from "react-apollo";
-import {withRouter} from "react-router-dom";
+import {BrowserRouter, withRouter} from "react-router-dom";
+import {getToken, getUserType} from "../../constants";
 
 class FormSignIn extends React.Component {
     constructor(props) {
@@ -28,6 +29,7 @@ class FormSignIn extends React.Component {
         const actionCloseModal = {type: 'actionCloseModal'};
         const passedUserSignIn = {type: 'passedUserSignIn'};
 
+
         dispatch(actionCloseModal);
         console.log(this.state);
 
@@ -42,21 +44,17 @@ class FormSignIn extends React.Component {
                 let loginParam = loginType.data.login;
                 if (loginParam.loginSuccess) {
                     localStorage.setItem('token', loginParam.token);
+                    localStorage.setItem('user_type', loginParam.user.type);
                     alert('Вы успешно авторизовались!');
-
                     if (loginParam.user.type === "FARMER")
                         this.props.history.push('/farmer');
                     window.location.reload();
-                    console.log(this.props);
                     dispatch(passedUserSignIn);
                 } else {
                     alert('Неверный логин или пароль');
                     document.getElementById('password').value = '';
-
                 }
             });
-
-
     };
 
     render() {

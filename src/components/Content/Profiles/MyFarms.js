@@ -8,7 +8,7 @@ import Icon from "material-icons-react";
 class MyFarms extends React.Component {
     render() {
         return(
-            <Query query={queryMyFarms}>
+            <Query fetchPolicy="cache-and-network" query={queryMyFarms}>
                 {({ loading, error, data }) => {
                     if (loading) return <p>Good things take time....</p>;
                     if (error) console.log(error);
@@ -33,7 +33,6 @@ class MyFarms extends React.Component {
                 }}
             </Query>
             )
-
     }
 }
 
