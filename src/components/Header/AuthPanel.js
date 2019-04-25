@@ -39,7 +39,7 @@ class AuthPanel extends React.Component {
                 <div className="top-menu">
                     <Menu font_size_class={"menu_items menu-items-font-14"} items={menuHeader}/>
                     <span className="acc_type">{this.props.authUser.type}</span>
-                    <div className="element_after"></div>
+                    <div className="element_after"/>
                     <div className="user-box">
                     <Icon className="material-icons md-24 md-dark" color="grey" icon="expand_more"/>
                     <Link to={this.choosePage()} className="username"><span>{this.props.authUser.fullName}</span></Link>
@@ -49,7 +49,7 @@ class AuthPanel extends React.Component {
                 </div>
                 <div className="bottom-menu">
                     <Menu font_size_class={"menu_items menu-items-font-18"}  items={menuAuth}/>
-                    <div className="element_after"></div>
+                    <div className="element_after"/>
                     <div className="rating-box">
                         <span className="rating">Rating: </span>
                         <span className="rating-number">3.5</span>

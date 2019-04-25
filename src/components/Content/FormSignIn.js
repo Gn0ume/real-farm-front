@@ -4,6 +4,7 @@ import user from "../../svg/user.svg";
 import {connect} from 'react-redux';
 import {loginUserMutation} from "../queries/queries";
 import {compose, withApollo} from "react-apollo";
+import {withRouter} from "react-router-dom";
 
 class FormSignIn extends React.Component {
     constructor(props) {
@@ -42,7 +43,11 @@ class FormSignIn extends React.Component {
                 if (loginParam.loginSuccess) {
                     localStorage.setItem('token', loginParam.token);
                     alert('Вы успешно авторизовались!');
+
+                    if (loginParam.user.type === "FARMER")
+                        this.props.history.push('/farmer');
                     window.location.reload();
+                    console.log(this.props);
                     dispatch(passedUserSignIn);
                 } else {
                     alert('Неверный логин или пароль');
@@ -79,8 +84,9 @@ class FormSignIn extends React.Component {
 const putStateToProps = (state) => {
     return {
         isOpenModal: state.isOpenModal,
-        passedUserSignIn: state.passedUserSignIn
+        passedUserSignIn: state.passedUserSignIn,
+        authUser: state.authUser
     }
 };
 
-export default withApollo(compose(connect(putStateToProps))(FormSignIn));
+export default withRouter(withApollo(compose(connect(putStateToProps))(FormSignIn)));

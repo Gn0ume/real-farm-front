@@ -34,21 +34,21 @@ class App extends React.Component {
 
     render() {
         const userInfo = this.getMeInfo();
-        return (
+       return (
             <BrowserRouter>
                 <div className="main-page">
                     {userInfo}
                     <Header/>
                     <div className="main-content">
-                        <Route path="/catalog" component={Catalog}></Route>
-                        <Route exact path="/" component={Home}></Route>
-                        <Route path="/news" component={News}></Route>
-                        <Route path="/documentation" component={Documents}></Route>
-                        <Route path="/who_we_are" component={WhoWeAre}></Route>
-                        <Route path="/our_team" component={OurTeam}></Route>
-                        <Route path="/for_investors" component={ForInvestors}></Route>
-                        <Route path="/farmer" component={MyFarms}></Route>
-                        <Route path="/profile" component={Profile}></Route>
+                        <Route path="/catalog" component={Catalog}/>
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/news" component={News}/>
+                        <Route path="/documentation" component={Documents}/>
+                        <Route path="/who_we_are" component={WhoWeAre}/>
+                        <Route path="/our_team" component={OurTeam}/>
+                        <Route path="/for_investors" component={ForInvestors}/>
+                        <Route path="/farmer" component={MyFarms}/>
+                        <Route path="/profile" component={Profile}/>
                     </div>
                     <Modal/>
                     <Footer/>

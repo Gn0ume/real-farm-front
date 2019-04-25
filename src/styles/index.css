@@ -6,6 +6,12 @@
     box-shadow: 0 10px 20px rgba(31, 32, 65, 0.05);
 }
 
+h1 {
+    font: bold 48px 'Montserrat';
+    color: #0C0C0C;
+    margin-left: 123px;
+}
+
 button {
     outline: none;
 }
