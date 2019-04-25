@@ -12,7 +12,7 @@ import {menuHeader} from "../../constants";
 
 class Header extends React.Component {
     buttonVisibility() {
-        return(this.props.passedUserSignIn ? "reg_buttons hidden" : "reg_buttons")
+        return(this.props.passedUserSignIn ? "hidden" : "")
     };
 
     chooseMenu() {
@@ -39,14 +39,14 @@ class Header extends React.Component {
                             dispatch(actionOpenSignInModal)
                         }}
                         id="header_sign_in"
-                        className={this.buttonVisibility()}>sign in
+                        className={`reg_buttons ${this.buttonVisibility()}`}>sign in
                     </button>
                     <button
                         onClick={() => {
                             dispatch(actionOpenRegisterModal)
                         }}
                         id="header_register"
-                        className={this.buttonVisibility()}>register
+                        className={`reg_buttons ${this.buttonVisibility()}`}>register
                     </button>
                 </div>
             </header>

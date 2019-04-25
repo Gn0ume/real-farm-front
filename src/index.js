@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {TOKEN} from './constants';
+import {getToken} from './constants';
 import ApolloClient from "apollo-boost";
 import config from "./config";
 import {ApolloProvider} from "react-apollo";
@@ -14,9 +14,9 @@ const initialState = {
     isOpenModal: false,
     contentModal: null,
     passedRegister: false,
-    passedUserSignIn: !!(TOKEN),
+    passedUserSignIn: !!(getToken()),
     authUser: {
-        id: " "
+        id: ""
     }
 };
 

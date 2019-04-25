@@ -31,6 +31,9 @@ const loginUserMutation = gql`
                 ) {
                     loginSuccess
                     token
+                    user {
+                        type
+                        }
                   }
             }
 `;
@@ -50,4 +53,20 @@ const queryMe = gql`
     }
 `;
 
-export {loginUserMutation, createUserMutation, queryMe}
+const queryMyFarms = gql`
+    {
+        me {
+            id
+            farms {
+                id
+                name
+                address
+                photos {
+                    url
+        }
+    }
+  }
+}
+`;
+
+export {loginUserMutation, createUserMutation, queryMe, queryMyFarms}

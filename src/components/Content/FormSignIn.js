@@ -4,6 +4,8 @@ import user from "../../svg/user.svg";
 import {connect} from 'react-redux';
 import {loginUserMutation} from "../queries/queries";
 import {compose, withApollo} from "react-apollo";
+import {BrowserRouter, withRouter} from "react-router-dom";
+import {getToken, getUserType} from "../../constants";
 
 class FormSignIn extends React.Component {
     constructor(props) {
@@ -27,6 +29,7 @@ class FormSignIn extends React.Component {
         const actionCloseModal = {type: 'actionCloseModal'};
         const passedUserSignIn = {type: 'passedUserSignIn'};
 
+
         dispatch(actionCloseModal);
         console.log(this.state);
 
@@ -41,17 +44,16 @@ class FormSignIn extends React.Component {
                 let loginParam = loginType.data.login;
                 if (loginParam.loginSuccess) {
                     localStorage.setItem('token', loginParam.token);
-                    alert('Вы успешно авторизовались!');
+                    localStorage.setItem('user_type', loginParam.user.type);
+                    if (loginParam.user.type === "FARMER")
+                        this.props.history.push('/farmer');
                     window.location.reload();
                     dispatch(passedUserSignIn);
                 } else {
                     alert('Неверный логин или пароль');
                     document.getElementById('password').value = '';
-
                 }
             });
-
-
     };
 
     render() {
@@ -79,8 +81,9 @@ class FormSignIn extends React.Component {
 const putStateToProps = (state) => {
     return {
         isOpenModal: state.isOpenModal,
-        passedUserSignIn: state.passedUserSignIn
+        passedUserSignIn: state.passedUserSignIn,
+        authUser: state.authUser
     }
 };
 
-export default withApollo(compose(connect(putStateToProps))(FormSignIn));
+export default withRouter(withApollo(compose(connect(putStateToProps))(FormSignIn)));

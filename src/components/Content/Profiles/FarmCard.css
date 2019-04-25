@@ -1,0 +1,59 @@
+.page-name-box {
+    box-shadow: 0 1px 0 rgba(31, 32, 65, 0.1);
+    margin: 15px 80px;
+    position: relative;
+    height: 50px;
+}
+
+.page-name {
+    font: bold 48px 'Montserrat';
+    color: #0C0C0C;
+    margin-left: 123px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 15px;
+    padding: 0 10px;
+}
+
+.farms-box-item {
+    display: flex;
+    flex-direction: column;
+    height: 407px;
+    width: 360px;
+    background: #FFFFFF;
+    box-shadow: 0 10px 20px rgba(31, 32, 65, 0.05);
+    border-radius: 4px;
+    margin: 30px;
+}
+
+.farms-box-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: inherit;
+    height: 205px;
+}
+
+.farm-settings-box {
+    text-align: end;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.more {
+    cursor: pointer;
+}
+
+.farm-name {
+    font: bold 19px 'Quicksand';
+    color: #1F2041;
+    margin: 15px 40px 10px 40px;
+}
+
+.farm-address {
+    font: normal 14px 'Montserrat';
+    color: #8f90a0;
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}

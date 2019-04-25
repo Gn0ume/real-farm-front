@@ -1,0 +1,16 @@
+.farms-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px 80px;
+}
+
+.new-farm {
+    height: 407px;
+    width: 360px;
+    border: 1px dashed #D4D4D4;
+    color: #676878;
+    font: normal 24px 'Montserrat';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
