@@ -15,6 +15,12 @@ class AuthPanel extends React.Component {
     choosePage() {
         return (this.props.authUser.type === "FARMER" ? "/farmer" : "/catalog")
     }
+
+    chooseName() {
+        const { fullName, username } = this.props.authUser;
+        return (fullName === " " ? username : fullName)
+    }
+
     render() {
         let menuAuth = [
             {
@@ -37,12 +43,13 @@ class AuthPanel extends React.Component {
         return (
             <div className="auth-panel">
                 <div className="top-menu">
+                    {console.log(this.props.authUser)}
                     <Menu font_size_class={"menu_items menu-items-font-14"} items={menuHeader}/>
                     <span className="acc_type">{this.props.authUser.type}</span>
                     <div className="element_after"/>
                     <div className="user-box">
                     <Icon className="material-icons md-24 md-dark" color="grey" icon="expand_more"/>
-                    <Link to={this.choosePage()} className="username"><span>{this.props.authUser.username}</span></Link>
+                    <Link to={this.choosePage()} className="username"><span>{this.chooseName()}</span></Link>
                     <Icon className="material-icons md-24 md-dark" color="grey" icon="chat"/>
                         <Link to="/profile"><img src={this.chooseAvatar()} alt="avatar" className="avatar"/></Link>
                     </div>
