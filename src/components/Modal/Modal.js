@@ -19,10 +19,10 @@ class Modal extends React.Component {
         return (
             <div id="modalWindow" className={this.isActive()}>
                 <div className="modalBackground"> </div>
-                <div className="modalContent" onClick={() => {
+                <div className="modalContent" onMouseDown={() => {
                     dispatch(actionCloseModal)
                 }}>
-                    <div className="contentContainer" onClick={e => Modal.preventBubbling(e)}>
+                    <div className="contentContainer" onMouseDown={e => Modal.preventBubbling(e)}>
                         {contentModal}
                     </div>
                 </div>
