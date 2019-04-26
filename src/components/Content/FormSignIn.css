@@ -30,7 +30,7 @@
     color: #FFF;
     text-transform: uppercase;
     border: none;
-    margin-top: 106px;
+    margin-top: 10px;
     cursor: pointer;
 }
 
@@ -76,3 +76,13 @@
     text-transform: uppercase;
 }
 
+.wrong-sign-in-box {
+    height: 20px;
+    text-align: center;
+    margin-top: 70px;
+}
+
+#wrong-sign-in {
+    font: normal 14px 'Montserrat';
+    color: red;
+}

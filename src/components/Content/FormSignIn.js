@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import {loginUserMutation} from "../queries/queries";
 import {compose, withApollo} from "react-apollo";
 import {BrowserRouter, withRouter} from "react-router-dom";
-import {getToken, getUserType} from "../../constants";
 
 class FormSignIn extends React.Component {
     constructor(props) {
@@ -29,10 +28,6 @@ class FormSignIn extends React.Component {
         const actionCloseModal = {type: 'actionCloseModal'};
         const passedUserSignIn = {type: 'passedUserSignIn'};
 
-
-        dispatch(actionCloseModal);
-        console.log(this.state);
-
         this.props.client.query ({
             query: loginUserMutation,
             variables: {
@@ -43,6 +38,7 @@ class FormSignIn extends React.Component {
             .then(loginType => {
                 let loginParam = loginType.data.login;
                 if (loginParam.loginSuccess) {
+                    dispatch(actionCloseModal);
                     localStorage.setItem('token', loginParam.token);
                     localStorage.setItem('user_type', loginParam.user.type);
                     if (loginParam.user.type === "FARMER")
@@ -50,7 +46,8 @@ class FormSignIn extends React.Component {
                     window.location.reload();
                     dispatch(passedUserSignIn);
                 } else {
-                    alert('Неверный логин или пароль');
+                    const message = document.getElementById('wrong-sign-in');
+                    message.classList.remove('hidden');
                     document.getElementById('password').value = '';
                 }
             });
@@ -70,6 +67,11 @@ class FormSignIn extends React.Component {
                         <input id="password" name="pass"
                             onChange={this.handleChange}
                                className="reg_field password" type="password" placeholder="........"/>
+                               <div className="wrong-sign-in-box">
+                                   <span id="wrong-sign-in" className="hidden">
+                                       Неверный логин или пароль
+                                   </span>
+                               </div>
                         <button className="sign_in_button" type="submit">sign in</button>
                     </form>
                 </div>
