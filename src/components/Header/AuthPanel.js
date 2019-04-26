@@ -42,7 +42,7 @@ class AuthPanel extends React.Component {
                     <div className="element_after"/>
                     <div className="user-box">
                     <Icon className="material-icons md-24 md-dark" color="grey" icon="expand_more"/>
-                    <Link to={this.choosePage()} className="username"><span>{this.props.authUser.fullName}</span></Link>
+                    <Link to={this.choosePage()} className="username"><span>{this.props.authUser.username}</span></Link>
                     <Icon className="material-icons md-24 md-dark" color="grey" icon="chat"/>
                         <Link to="/profile"><img src={this.chooseAvatar()} alt="avatar" className="avatar"/></Link>
                     </div>
