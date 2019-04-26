@@ -69,7 +69,7 @@ class FormSignIn extends React.Component {
                                className="reg_field password" type="password" placeholder="........"/>
                                <div className="wrong-sign-in-box">
                                    <span id="wrong-sign-in" className="hidden">
-                                       Неверный логин или пароль
+                                       Invalid login or password
                                    </span>
                                </div>
                         <button className="sign_in_button" type="submit">sign in</button>
