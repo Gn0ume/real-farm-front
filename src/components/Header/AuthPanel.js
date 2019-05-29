@@ -43,7 +43,6 @@ class AuthPanel extends React.Component {
         return (
             <div className="auth-panel">
                 <div className="top-menu">
-                    {console.log(this.props.authUser)}
                     <Menu font_size_class={"menu_items menu-items-font-14"} items={menuHeader}/>
                     <span className="acc_type">{this.props.authUser.type}</span>
                     <div className="element_after"/>

@@ -1,0 +1,147 @@
+.profile-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-box-content {
+    display: flex;
+    margin: 40px 80px;
+}
+
+.profile-box-content .fields-name {
+    font: bold 12px Montserrat;
+    text-transform: uppercase;
+    color: #1F2041;
+    margin-bottom: 12px;
+    margin-top: 15px;
+}
+
+.profile-avatar {
+    display: flex;
+    flex-direction: column;
+    margin-right: 35px;
+}
+
+.profile-avatar-photo {
+    width: 300px;
+    border-radius: 4px;
+    background: #FFFFFF;
+    margin-bottom: 12px;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-avatar-photo img {
+    width: 300px;
+    border-radius: 4px;
+
+}
+
+.profile-avatar-crop-box {
+    width: inherit;
+    height: inherit;
+}
+
+.profile-avatar .upload-remove-photo {
+    font: normal 14px 'Montserrat';
+    color: #1F2041;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.profile-avatar a {
+    font: normal 14px 'Montserrat';
+    color: #1F2041;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-bottom: 8px;
+}
+
+.upload-input {
+    display: none;
+    clip: rect(0 0 0 0);
+    opacity: 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    margin-right: 35px;
+}
+
+.profile-info input {
+    width: 320px;
+    height: 44px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid rgba(31, 32, 65, 0.5);
+    font: normal 14px 'Montserrat';
+    padding-left: 44px;
+}
+
+.profile-info input::placeholder {
+    margin-left: 44px;
+}
+
+#profile-first-name::placeholder,
+#profile-last-name::placeholder,
+#profile-email::placeholder {
+    font: normal 14px 'Montserrat';
+    color: #575870;
+}
+
+.profile-about-me {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-about-me textarea {
+    resize: none;
+    font: normal 14px 'Montserrat';
+    border-radius: 4px;
+    border: 1px solid rgba(31, 32, 65, 0.5);
+    width: 580px;
+    height: 200px;
+    padding-left: 20px;
+    padding-top: 13px;
+    box-sizing: border-box;
+}
+
+.profile-about-me textarea::placeholder {
+    font: normal 14px 'Montserrat';
+}
+
+.profile-about-me-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-about-me-char-qty {
+    margin: 15px 0 5px 0;
+    display: inline;
+    font: normal 12px 'Montserrat';
+    text-transform: uppercase;
+    color: rgba(31, 32, 65, 0.5);
+}
+
+.profile-box-save-button {
+    width: 110px;
+    height: 44px;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    border-radius: 22px;
+    font: bold 12px 'Montserrat';
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    border: solid 2px #FFFFFF;
+    cursor: pointer;
+}

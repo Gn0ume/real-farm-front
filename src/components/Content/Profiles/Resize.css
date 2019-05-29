@@ -1,0 +1,58 @@
+.crop-element-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.square-crop {
+    position: absolute;
+    outline: 1px dashed rgba(255, 255, 255, 0.6);
+    top: 0;
+}
+
+.circle-crop {
+    height: inherit;
+    width: inherit;
+    border-radius: 50%;
+    border: solid transparent 1px;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 0 0 99999px rgba(0, 0, 0, .4);
+}
+
+.rectangles-crop {
+    height: 12px;
+    width: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    position: absolute;
+    background: rgba(196, 196, 196, 0.4);
+}
+
+.top-left {
+    top: -7px;
+    left: -7px;
+    cursor: pointer;
+}
+
+.top-right {
+    top: -7px;
+    right: -7px;
+    cursor: pointer;
+}
+
+.bottom-left {
+    bottom: -6px;
+    left: -7px;
+    cursor: pointer;
+}
+
+.bottom-right {
+    bottom: -6px;
+    right: -7px;
+    cursor: pointer;
+}
+
+#crop-element-container {
+    position: absolute;
+    top: 0;
+}

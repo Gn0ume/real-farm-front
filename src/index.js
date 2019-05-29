@@ -38,6 +38,7 @@ const reducer = (state = initialState, action) => {
         case 'passedUserSignIn':
             return {...state, passedUserSignIn: true};
         case 'infoAuthUser':
+            console.log(action.payload)
             return {...state, authUser: action.payload}
 
     }

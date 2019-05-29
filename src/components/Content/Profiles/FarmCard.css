@@ -1,6 +1,6 @@
 .page-name-box {
     box-shadow: 0 1px 0 rgba(31, 32, 65, 0.1);
-    margin: 15px 80px;
+    margin: 15px 23px;
     position: relative;
     height: 50px;
 }
@@ -57,3 +57,4 @@
     align-items: center;
     margin-left: 40px;
 }
+

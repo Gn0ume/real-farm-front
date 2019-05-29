@@ -20,3 +20,5 @@ export const menuHeader = [
 export const getToken = () => localStorage.getItem('token');
 
 export const getUserType = () => localStorage.getItem('user_type');
+
+export const WIDTH_AVATAR = 300;

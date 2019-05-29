@@ -43,13 +43,68 @@ const queryMe = gql`
         me {
             id
             username
-            firstName
-            lastName
             fullName
             type
             email
             avatarUrl  
         }
+    }
+`;
+
+const queryClearAvatar = gql`
+    query {
+        me {
+            id
+            clearAvatar 
+        }
+    }
+`;
+
+const queryMyProfile = gql`
+    query {
+          me {
+            id
+            firstName
+            lastName
+            avatarUrl
+            aboutMe
+            avatarCropSettings
+            gender
+            type
+            email
+            avatar {
+                metaData
+                url
+            }
+          }
+ }
+`;
+
+const queryUpdateMyProfile = gql`
+    query(
+        $aboutMe: String
+        $firstName: String
+        $lastName: String
+        $gender: UserGender
+        $type: UserType
+        $avatarCropSettings: [Float]
+        ){
+            me {
+                id
+                update (
+                aboutMe: $aboutMe
+                firstName: $firstName
+                lastName: $lastName
+                gender: $gender
+                type: $type
+                avatarCropSettings: $avatarCropSettings
+                ) {
+                    id
+                    fullName
+                    username
+                    avatarUrl
+                    }
+                }
     }
 `;
 
@@ -69,4 +124,12 @@ const queryMyFarms = gql`
 }
 `;
 
-export {loginUserMutation, createUserMutation, queryMe, queryMyFarms}
+export {
+    loginUserMutation,
+    createUserMutation,
+    queryMe,
+    queryMyProfile,
+    queryUpdateMyProfile,
+    queryMyFarms,
+    queryClearAvatar
+}
