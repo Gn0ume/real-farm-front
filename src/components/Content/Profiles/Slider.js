@@ -20,10 +20,11 @@ class Slider extends React.Component {
         let slideItems = [];
         for (let i = 0; i < this.len; i++) {
             slideItems[i] =
+                <div key={i}>
                 <img className={"slider slider" + (i + 1)}
-                     key={i}
                      src={this.props.photos[i].url}
                      alt="farmFoto"/>;
+                </div>
         }
         return slideItems;
     }
