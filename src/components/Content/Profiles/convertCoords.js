@@ -18,17 +18,9 @@ class CoordsConverter {
     }
     //перевод вo float
     getRelCoords(point) {
-        console.log("Работает getRelCoords");
-        console.log("Точка = ", point);
-        console.log("Размеры = ", this.width, this.height);
-
         const relPoint = new Point();
         relPoint.x = (point.x / this.width).toFixed(3);
-        if (relPoint.x > 1 || relPoint.x < 0) {
-            console.log("Координата больше 1 или меньше 0");
-        }
         relPoint.y = (point.y / this.height).toFixed(3);
-        console.log("Точка для стейта = ", relPoint);
         return relPoint;
     }
 }

@@ -5,39 +5,15 @@ import {CoordsConverter, Point} from "./convertCoords";
 class Resize extends React.Component {
     constructor(props) {
         super(props);
-        this.isReady = this.props.canvasSize && this.props.points;
-
-        const {width, height} = this.props.canvasSize; //высота и ширина (300) аватара
-        //const cropPoints = this.props.points;
-        //const sizeCrop = width * (cropPoints[2] - cropPoints[0]); //сторона квадрата в котором нах-ся кропэлемент
-        this.avatarConvert = new CoordsConverter(width, height);
-       // const topLeftPointAbs = new Point(cropPoints[0], cropPoints[1]);
-        //const topLeftPoint = this.avatarConvert.getAbsCoords(topLeftPointAbs);
-        this.currentState = {
-            width: 0,
-            height: 0,
-            top: 0,
-            left: 0
-        };
-
-        this.state = {
-            width: 0,
-            height: 0,
-            top: 0,
-            left: 0
-        };
-
         this.minCropSize = {
             width: 100,
             height: 100
         };
-        this.multipliers = [[1,1], [-1,1], [-1,-1], [1,-1]];
-        this.deltaX = 0;
-        this.deltaY = 0;
+        this.multipliers = [[1, 1], [-1, 1], [-1, -1], [1, -1]];
         this.canvasSize = {
             width: 0,
             height: 0
-        }
+        };
     }
 
     componentWillMount() {
@@ -45,23 +21,34 @@ class Resize extends React.Component {
     }
 
     componentWillUpdate(nextProps, nextState, nextContext) {
-       this.getParameters();
+        this.getParameters(nextProps);
     }
 
-    getParameters() {
-        const {width, height} = this.props.canvasSize; //высота и ширина (300) аватара
-        const cropPoints = this.props.points;
+    getParameters(props = this.props) {
+        this.isReady = props.canvasSize && props.points;
+        this.currentState = {
+            width: 0,
+            height: 0,
+            top: 0,
+            left: 0
+        };
+
+        this.deltaX = 0;
+        this.deltaY = 0;
+        const {width, height} = props.canvasSize; //высота и ширина (300) аватара
+        const cropPoints = props.points;
         const sizeCrop = width * (cropPoints[2] - cropPoints[0]); //сторона квадрата в котором нах-ся кропэлемент
-        const avatarConvert = new CoordsConverter(width, height);
+        this.avatarConvert = new CoordsConverter(width, height);
         const topLeftPointAbs = new Point(cropPoints[0], cropPoints[1]);
-        const topLeftPoint = avatarConvert.getAbsCoords(topLeftPointAbs);
-        this.currentState.width = sizeCrop;
-        this.currentState.height = sizeCrop;
-        this.currentState.top = topLeftPoint.y;
-        this.currentState.left = topLeftPoint.x;
+        const topLeftPoint = this.avatarConvert.getAbsCoords(topLeftPointAbs);
+        this.currentState = {
+            width: sizeCrop,
+            height: sizeCrop,
+            top: topLeftPoint.y,
+            left: topLeftPoint.x
+        };
         this.canvasSize.width = width;
         this.canvasSize.height = height;
-        console.log("Новый", this.currentState)
     }
 
     getPoints() {
@@ -82,12 +69,17 @@ class Resize extends React.Component {
         this.cropElement.style.height = this.currentState.height + 'px';
         this.cropElement.style.top = this.currentState.top + 'px';
         this.cropElement.style.left = this.currentState.left + 'px';
-        this.props.onChange(this.getPoints())
+
+        this.circleCrop.style.width = this.currentState.width + 'px';
+        this.circleCrop.style.height = this.currentState.height + 'px';
+        this.circleCrop.style.top = this.currentState.top + 'px';
+        this.circleCrop.style.left = this.currentState.left + 'px';
     }
 
 
     moveCropCircle(evt) {
         this.cropContainer = document.getElementById('crop-element-container');
+        this.circleCrop = document.getElementById('circleCrop');
         this.cropElement = document.getElementById('cropElement');
         const {x, y} = this.cropContainer.getBoundingClientRect();
         console.log(this.cropContainer.getBoundingClientRect());
@@ -134,6 +126,7 @@ class Resize extends React.Component {
             e.preventDefault();
             document.removeEventListener('mousemove', moveHandler);
             document.removeEventListener('mouseup', upHandler);
+            this.props.onChange(this.getPoints());
         };
         document.addEventListener('mouseup', upHandler);
     }
@@ -141,6 +134,7 @@ class Resize extends React.Component {
     changeSize(evt) {
         const point = evt.target.getAttribute('data-pointnumber');
         this.cropContainer = document.getElementById('crop-element-container');
+        this.circleCrop = document.getElementById('circleCrop');
         this.cropElement = document.getElementById('cropElement');
         const {x, y} = this.cropContainer.getBoundingClientRect();
         const {width, height, top, left} = this.currentState;
@@ -189,7 +183,7 @@ class Resize extends React.Component {
 
             if ((centerY - cornerY) * 2 >= this.minCropSize.height) {
                 this.currentState.height = (centerX - cornerX) * 2;
-                } else {
+            } else {
                 this.currentState.height = this.minCropSize.height;
             }
 
@@ -201,6 +195,7 @@ class Resize extends React.Component {
             e.preventDefault();
             document.removeEventListener('mousemove', moveHandler);
             document.removeEventListener('mouseup', upHandler);
+            this.props.onChange(this.getPoints());
         };
 
         document.addEventListener('mouseup', upHandler);
@@ -212,25 +207,32 @@ class Resize extends React.Component {
                  className="noselect">
 
                 {this.isReady &&
-                <div id="cropElement"
-                     className="square-crop"
-                     style={{...this.currentState}}>
-                    <div
-                        id="top-left-crop-point"
-                        data-pointnumber="0"
-                        className="rectangles-crop top-left"
-                        onMouseDown={(evt) => this.changeSize(evt)}/>
-                    <div data-pointnumber="1"
-                        className="rectangles-crop top-right"
-                         onMouseDown={(evt) => this.changeSize(evt)}/>
-                    <div data-pointnumber="2"
-                        className="rectangles-crop bottom-right"
-                         onMouseDown={(evt) => this.changeSize(evt)}/>
-                    <div data-pointnumber="3"
-                        className="rectangles-crop bottom-left"
-                         onMouseDown={(evt) => this.changeSize(evt)}/>
+                <div>
+                    <div id="cropElement"
+                         className="square-crop"
+                         style={{...this.currentState}}>
+                        <div
+                            id="top-left-crop-point"
+                            data-pointnumber="0"
+                            className="rectangles-crop top-left"
+                            onMouseDown={(evt) => this.changeSize(evt)}/>
+                        <div data-pointnumber="1"
+                             className="rectangles-crop top-right"
+                             onMouseDown={(evt) => this.changeSize(evt)}/>
+                        <div data-pointnumber="2"
+                             className="rectangles-crop bottom-right"
+                             onMouseDown={(evt) => this.changeSize(evt)}/>
+                        <div data-pointnumber="3"
+                             className="rectangles-crop bottom-left"
+                             onMouseDown={(evt) => this.changeSize(evt)}/>
+                        <div id="circleCrop" className="circle-crop-invisible"
+                             onMouseDown={(evt) => this.moveCropCircle(evt)}/>
+                    </div>
+                    <div className="container-for-circle"
+                    style={{...this.canvasSize}}>
                     <div id="circleCrop" className="circle-crop"
-                         onMouseDown={(evt) => this.moveCropCircle(evt)}/>
+                         style={{...this.currentState}}/>
+                </div>
                 </div>
                 }
             </div>

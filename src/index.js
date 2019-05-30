@@ -17,6 +17,7 @@ const initialState = {
     passedUserSignIn: !!(getToken()),
     authUser: {
         id: ""
+
     }
 };
 

@@ -1,23 +1,36 @@
 .crop-element-container {
     height: 100%;
     width: 100%;
-    overflow: hidden;
 }
 
 .square-crop {
     position: absolute;
     outline: 1px dashed rgba(255, 255, 255, 0.6);
     top: 0;
+    z-index: 10;
+}
+
+.container-for-circle {
+    overflow: hidden;
+    position: fixed;
 }
 
 .circle-crop {
+    border-radius: 50%;
+    position: absolute;
+    border: solid transparent 1px;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 0 0 99999px rgba(0, 0, 0, .4);
+}
+
+.circle-crop-invisible {
     height: inherit;
     width: inherit;
     border-radius: 50%;
     border: solid transparent 1px;
     box-sizing: border-box;
     cursor: pointer;
-    box-shadow: 0 0 0 99999px rgba(0, 0, 0, .4);
 }
 
 .rectangles-crop {

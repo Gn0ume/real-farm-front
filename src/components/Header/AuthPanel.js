@@ -9,6 +9,7 @@ import {Link} from "react-router-dom";
 
 class AuthPanel extends React.Component {
     chooseAvatar () {
+        console.log("this.props.authUser in chooseAvatar", this.props.authUser)
         return (this.props.authUser.avatarUrl == null ? default_avatar : this.props.authUser.avatarUrl);
     };
 

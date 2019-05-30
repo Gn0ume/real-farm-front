@@ -172,6 +172,7 @@ class Profile extends React.Component {
                 const dispatch = this.props.dispatch;
                 const infoAuthUser = {type: 'infoAuthUser', payload: {...this.props.authUser, ...freshUser}};
                 dispatch(infoAuthUser);
+                console.log(this.props.authUser)
             })
             .catch(err => {
                 console.log(err)

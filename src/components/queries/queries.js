@@ -47,6 +47,13 @@ const queryMe = gql`
             type
             email
             avatarUrl  
+            avatar {
+                metaData
+                url
+                preview {
+                    url
+                }
+            }
         }
     }
 `;
@@ -75,6 +82,9 @@ const queryMyProfile = gql`
             avatar {
                 metaData
                 url
+                preview {
+                    url
+                }
             }
           }
  }
@@ -103,6 +113,13 @@ const queryUpdateMyProfile = gql`
                     fullName
                     username
                     avatarUrl
+                    avatar {
+                metaData
+                url
+                preview {
+                    url
+                }
+            }
                     }
                 }
     }
