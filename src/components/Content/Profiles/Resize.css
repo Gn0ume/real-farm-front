@@ -12,7 +12,8 @@
 
 .container-for-circle {
     overflow: hidden;
-    position: fixed;
+    position: absolute;
+    border-radius: 4px;
 }
 
 .circle-crop {

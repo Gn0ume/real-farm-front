@@ -45,15 +45,15 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.client.query({
-            query: queryMyProfile
+            query: queryMyProfile,
+            fetchPolicy: 'no-cache'
         })
             .then(({data}) => {
-                console.log('data', data);
-                if (data.me.avatarUrl != null) {
-                    data.me.avatar.metaData = JSON.parse(data.me.avatar.metaData);
+                const me = {...data.me};
+                 if (me.avatarUrl != null) {
+                    me.avatar.metaData = JSON.parse(me.avatar.metaData);
                 }
-                this.setState({...data.me, isReady: true});
-                console.log("ВЫполнился запрос =", this.state);
+                this.setState({...me, isReady: true});
             })
     }
 
@@ -77,7 +77,6 @@ class Profile extends React.Component {
 
         const file = e.target.files[0];
         const fd = new FormData();
-        console.log(e.target.files[0]);
         fd.append('avatar', file);
         axios({
             url: 'http://188.225.79.210:5000/uploadAvatar',
@@ -104,14 +103,9 @@ class Profile extends React.Component {
                         avatar: {url: res.url, metaData: metaData},
                         avatarCropSettings: res.avatarCropSettings
                     });
-                    console.log("Обновился стейт")
-
-
-
                 } else {
                     this.setState({errors: res.errors});
                 }
-
             });
     }
 
@@ -172,7 +166,6 @@ class Profile extends React.Component {
                 const dispatch = this.props.dispatch;
                 const infoAuthUser = {type: 'infoAuthUser', payload: {...this.props.authUser, ...freshUser}};
                 dispatch(infoAuthUser);
-                console.log(this.props.authUser)
             })
             .catch(err => {
                 console.log(err)
@@ -206,7 +199,8 @@ class Profile extends React.Component {
                             <div className="profile-avatar">
                                 <div id="crop-container"
                                      className="profile-avatar-photo"
-                                     style={this.getCanvasSize()}>
+                                     style={this.state.avatar === null ?
+                                         null : this.getCanvasSize()}>
 
                                     <img src={this.getAvatar()} alt="profile-avatar"/>
                                     {this.state.avatar === null ?

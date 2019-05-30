@@ -82,7 +82,6 @@ class Resize extends React.Component {
         this.circleCrop = document.getElementById('circleCrop');
         this.cropElement = document.getElementById('cropElement');
         const {x, y} = this.cropContainer.getBoundingClientRect();
-        console.log(this.cropContainer.getBoundingClientRect());
         const allowedRectangle = () => {
             return {
                 x: (this.canvasSize.width - this.currentState.width).toFixed(0),
@@ -225,7 +224,7 @@ class Resize extends React.Component {
                         <div data-pointnumber="3"
                              className="rectangles-crop bottom-left"
                              onMouseDown={(evt) => this.changeSize(evt)}/>
-                        <div id="circleCrop" className="circle-crop-invisible"
+                        <div className="circle-crop-invisible"
                              onMouseDown={(evt) => this.moveCropCircle(evt)}/>
                     </div>
                     <div className="container-for-circle"
