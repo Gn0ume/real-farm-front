@@ -167,7 +167,7 @@ class FormRegister extends React.Component {
                                     onChange={this.handleChange}
                                     className="reg_field select_acc_type" >
                                     <option className="option_acc_type" value="FARMER">FARMER</option>
-                                    <option className="option_acc_type" value="BUYER">CUSTOMER</option>
+                                    <option className="option_acc_type" value="CUSTOMER">CUSTOMER</option>
                                 </select>
                                 <button
                                     onClick={() => this.onButtonClick()}

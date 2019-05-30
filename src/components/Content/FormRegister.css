@@ -263,8 +263,7 @@
     top: 15px;
 }
 
-.complete_button
-{
+.complete_button {
     background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
     border-radius: 22px;
     position: relative;
@@ -287,23 +286,27 @@
     color: #FFFFFF;
 }
 
-.slider{
+.slider {
     width: 300%;
     height: 338px;
     position: relative;
     transition: left linear .2s;
 }
-.slider>div{
+
+.slider > div {
     width: 360px;
     height: 100%;
     float: left;
 }
+
 .step1 {
     left: 0;
 }
+
 .step2 {
     left: -100%;
 }
+
 .step3 {
     left: -200%;
 }

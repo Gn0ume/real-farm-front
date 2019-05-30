@@ -19,12 +19,17 @@ import MyFarms from "./components/Content/Profiles/MyFarms";
 import Profile from "./components/Content/Profiles/Profile";
 
 class App extends React.Component {
+    constructor(props){
+        super(props);
+        this.getMeInfo();
+    }
     getMeInfo() {
         if (getToken()) {
             this.props.client.query({
                 query: queryMe
             })
                 .then(data => {
+                    console.log('get me info');
                     const dispatch = this.props.dispatch;
                     const infoAuthUser = {type: 'infoAuthUser', payload: data.data.me};
                     dispatch(infoAuthUser);
@@ -41,11 +46,9 @@ class App extends React.Component {
     }
 
     render() {
-        const userInfo = this.getMeInfo();
         return (
             <BrowserRouter>
                 <div className="main-page">
-                    {userInfo}
                     <Header/>
                     <div className="main-content">
                         <Route path="/catalog" component={Catalog}/>

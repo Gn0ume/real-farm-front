@@ -1,0 +1,45 @@
+.buttons-panel {
+    width: 320px;
+    height: 44px;
+    border-radius: 4px;
+}
+
+.buttons-panel button {
+    font: normal 14px 'Montserrat';
+    text-align: center;
+    color: rgba(31, 32, 65, 0.75);
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    background: #FFFFFF;
+    width: 106px;
+    height: 44px;
+    cursor: pointer;
+}
+
+.buttons-panel .first-button {
+    border-radius: 4px 0 0 4px;
+}
+
+.buttons-panel .last-button {
+    border-radius: 0 4px 4px 0;
+}
+
+.active-button {
+    background: linear-gradient(180deg, #FFCC33 0%, #FFB347 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+}
+
+/*styles for radio button*/
+.gender-radio-button, .acc-type-radio-button {
+    display: flex;
+    align-items: center;
+}
+
+input[type="radio"] {
+ height: 15px;
+    width: 15px;
+}
+
+label {
+    font: normal 14px 'Montserrat';
+}

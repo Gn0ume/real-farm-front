@@ -4,7 +4,7 @@ import user from "../../svg/user.svg";
 import {connect} from 'react-redux';
 import {loginUserMutation} from "../queries/queries";
 import {compose, withApollo} from "react-apollo";
-import {BrowserRouter, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 class FormSignIn extends React.Component {
     constructor(props) {
