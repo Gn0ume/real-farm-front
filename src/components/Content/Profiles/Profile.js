@@ -10,14 +10,18 @@ import {getToken} from "../../../constants";
 import defaultAvatar from '../../../img/defaultAvatar.jpg'
 import {connect} from "react-redux";
 import {WIDTH_AVATAR} from "../../../constants";
+import PageHeader from "./PageHeader";
+import config from '../../../config';
+import RealFarmComponent from './RealFarmComponent';
 
-class Profile extends React.Component {
+
+
+class Profile extends RealFarmComponent {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeRadio = this.handleChangeRadio.bind(this);
         this.handleRemoveFile = this.handleRemoveFile.bind(this);
-
         this.state = {
             isReady: false,
             email: '',
@@ -53,7 +57,9 @@ class Profile extends React.Component {
                  if (me.avatarUrl != null) {
                     me.avatar.metaData = JSON.parse(me.avatar.metaData);
                 }
-                this.setState({...me, isReady: true});
+                this.setState({...me, isReady: true}, () => {
+                    this.refreshCurrentState();
+                });
             })
     }
 
@@ -74,12 +80,11 @@ class Profile extends React.Component {
 
     handleFileUpload(e) {
         this.setState({errors: []});
-
         const file = e.target.files[0];
         const fd = new FormData();
         fd.append('avatar', file);
         axios({
-            url: 'http://188.225.79.210:5000/uploadAvatar',
+            url: `${config.serverAddress}/uploadAvatar`,
             method: 'POST',
             headers: {
                 authorization: getToken() ? `Bearer ${getToken()}` : ''
@@ -148,8 +153,7 @@ class Profile extends React.Component {
         return errors.length ? errors : ''
     }
 
-    onClickSaveButton(event) {
-        event.preventDefault();
+    onClickSaveButton() {
         this.props.client.query({
             query: queryUpdateMyProfile,
             variables: {
@@ -162,6 +166,7 @@ class Profile extends React.Component {
             }
         })
             .then(({data}) => {
+                this.refreshCurrentState();
                 const freshUser = data.me.update;
                 const dispatch = this.props.dispatch;
                 const infoAuthUser = {type: 'infoAuthUser', payload: {...this.props.authUser, ...freshUser}};
@@ -191,9 +196,10 @@ class Profile extends React.Component {
             <div>
                 {this.state.isReady &&
                 <div>
-                    <div className="page-name-box">
-                        <span className="page-name">Profile</span>
-                    </div>
+                    <PageHeader pagename="profile"
+                                buttons="true"
+                                changed={this.dataChanged}
+                                onSave={() => this.onClickSaveButton()}/>
                     <div className="profile-box">
                         <div className="profile-box-content">
                             <div className="profile-avatar">
@@ -282,10 +288,6 @@ class Profile extends React.Component {
                                 />
                             </div>
                         </div>
-                        <button className="profile-box-save-button"
-                                onClick={(event) => this.onClickSaveButton(event)}>
-                            Save
-                        </button>
                     </div>
                 </div>
                 }

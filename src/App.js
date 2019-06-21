@@ -17,6 +17,7 @@ import OurTeam from "./components/Content/AboutUs/OurTeam";
 import ForInvestors from "./components/Content/AboutUs/ForInvestors";
 import MyFarms from "./components/Content/Profiles/MyFarms";
 import Profile from "./components/Content/Profiles/Profile";
+import CreateEditFarm from "./components/Content/Profiles/CreateEditFarm";
 
 class App extends React.Component {
     constructor(props){
@@ -60,6 +61,7 @@ class App extends React.Component {
                         <Route path="/for_investors" component={ForInvestors}/>
                         <Route path="/farmer" render={() => (App.isFarmer())}/>
                         <Route path="/profile" component={Profile}/>
+                        <Route path="/edit_farm/:id" component={CreateEditFarm}/>
                     </div>
                     <Modal/>
                     <Footer/>

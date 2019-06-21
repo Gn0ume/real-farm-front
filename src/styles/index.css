@@ -25,3 +25,17 @@ button {
     user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: block; /* For Firefox */
+}
+
+[contenteditable=true]:focus:empty:before {
+    content: '';
+    display: block; /* For Firefox */
+}

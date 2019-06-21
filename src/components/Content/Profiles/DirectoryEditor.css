@@ -1,0 +1,67 @@
+.farm-docs-loader {
+    width: 1262px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px #6FCF97 solid;
+    padding-top: 24px;
+    padding-left: 28px;
+}
+
+.farm-docs-loader-data-box {
+    display: flex;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.farm-docs-loader-name {
+    font: normal 19px 'Quicksand';
+    color: #1F2041;
+    margin-bottom: 12px;
+    text-transform: capitalize;
+}
+
+.farm-docs-loader-date {
+    font: normal 14px 'Montserrat';
+    color: rgba(31, 32, 65, 0.5);
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.farm-docs-loader-last-update {
+    font: normal 14px 'Montserrat';
+    color: rgba(31, 32, 65, 0.3);
+}
+
+.farm-docs-loader-cards-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.upload-resource-input {
+    display: none;
+    clip: rect(0 0 0 0);
+    opacity: 0;
+}
+
+.farm-docs-loader-new-card {
+    width: 360px;
+    height: 340px;
+    background: #FFFFFF;
+    border: 1px dashed #D4D4D4;
+    box-sizing: border-box;
+    box-shadow: 0 10px 20px rgba(31, 32, 65, 0.05);
+    border-radius: 4px;
+    color: #676878;
+    font: normal 24px 'Montserrat';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 25px;
+    margin-bottom: 29px;
+}
+
+.hidden {
+    display: none;
+}

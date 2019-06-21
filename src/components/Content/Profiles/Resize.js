@@ -61,7 +61,6 @@ class Resize extends React.Component {
             parseFloat(topLeftPointForServer.y),
             parseFloat(bottomRightPointForServer.x),
             parseFloat(bottomRightPointForServer.y)]
-
     }
 
     drawCropper() {

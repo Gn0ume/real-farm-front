@@ -1,0 +1,26 @@
+.farm-name-input {
+    height: 79px;
+    border-radius: 4px;
+    position: absolute;
+    left: 270px;
+    top: 5px;
+    box-sizing: border-box;
+    font: bold 48px 'Montserrat';
+    padding-left: 20px;
+    padding-right: 56px;
+    padding-top: 9px;
+    color: #676878;
+    border: 1px solid transparent;
+    min-width: 320px;
+    background: center right 10px no-repeat #fff url("../../../img/icons/create-icon.svg");
+
+}
+
+.farm-name-input:focus {
+    border: 1px solid #6FCF97;
+    outline: none;
+    background: white;
+    padding-right: 20px;
+}
+
+

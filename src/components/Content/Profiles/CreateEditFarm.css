@@ -1,0 +1,89 @@
+.create-edit-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.farm-name-box {
+    position: relative;
+    background: white;
+}
+
+.part-name {
+    font: normal 24px 'Montserrat';
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+.part-name-container {
+    margin-top: 47px;
+    margin-bottom: 20px;
+}
+
+.farm-data-container {
+    display: flex;
+    width: 1292px;
+    justify-content: space-between;
+}
+
+.form-fields-name {
+    font: bold 12px Montserrat;
+    text-transform: uppercase;
+    color: #1F2041;
+    margin-bottom: 5px;
+    margin-top: 18px;
+}
+
+.farm-data-map-container {
+    display: flex;
+    flex-direction: column;
+    width: 753px;
+    margin-right: 37px;
+}
+
+.farm-data-tin {
+    width: 472px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 4px;
+    font: normal 14px 'Montserrat';
+    padding-left: 44px;
+}
+
+.farm-data-disc {
+    width: 472px;
+    height: 311px;
+    background: #FFFFFF;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 4px;
+    resize: none;
+    font: normal 14px 'Montserrat';
+    padding: 20px;
+}
+
+.farm-data-map {
+    width: 753px;
+    height: 331px;
+    border-radius: 4px;
+}
+
+.farm-data-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 472px;
+}
+
+.farm-data-tin::placeholder,
+.farm-data-disc::placeholder {
+    font: normal 14px 'Montserrat';
+    color: #575870;
+    margin-left: 40px;
+}
+
+.farm-data-info-container > input {
+
+}
+

@@ -1,0 +1,64 @@
+.page-name-box {
+    box-shadow: 0 1px 0 rgba(31, 32, 65, 0.1);
+    margin: 15px 23px;
+    position: relative;
+    height: 50px;
+}
+
+.page-name {
+    font: bold 48px 'Montserrat';
+    color: #0C0C0C;
+    margin-left: 123px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 15px;
+    padding: 0 10px;
+    text-transform: capitalize;
+}
+
+.head_button {
+    position: absolute;
+    right: 110px;
+    top: 26px;
+    display: flex;
+    background-color: #FFFFFF;
+}
+
+.head_button button {
+    font: bold 12px 'Montserrat';
+    text-transform: uppercase;
+    color: #FFFFFF;
+    height: 44px;
+    width: 99px;
+    text-align: center;
+    border: solid 1px transparent;
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.head_button a {
+    text-decoration: none;
+}
+
+.save_changes_button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+}
+
+.button_saved {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 1px solid #6FCF97 !important;
+    background: linear-gradient(180deg, #B7E7CB 0%, #B3E8F4 100%);
+}
+
+.cancel_button {
+    margin-right: 20px;
+    background: linear-gradient(180deg, #FFCC33 0%, #FFB347 100%);
+}

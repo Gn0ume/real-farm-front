@@ -1,0 +1,59 @@
+.farm-docs-loader-card {
+    width: 360px;
+    min-height: 340px;
+    background: #FFFFFF;
+    box-shadow: 0 10px 20px rgba(31, 32, 65, 0.05);
+    border-radius: 4px;
+    margin-right: 50px;
+    margin-bottom: 29px;
+}
+
+.move-icon {
+    cursor: move;
+}
+
+
+.farm-docs-loader-card-photo {
+    height: 188px;
+    width: inherit;
+    background: #6FCF97;
+    border-radius: 4px;
+}
+
+.farm-docs-loader-card-photo-img {
+    width: inherit;
+    height: inherit;
+    border-radius: 4px 4px 0 0;
+}
+
+.resource-name {
+    display: block;
+    width: 280px;
+    word-wrap: break-word;
+    font: bold 19px 'Quicksand';
+    color: #1F2041;
+    padding: 15px 40px 10px 40px;
+}
+
+.horizontal-line {
+    width: 280px;
+    height: 1px;
+    margin-left: 40px;
+    margin-top: 18px;
+    background: rgba(31, 32, 65, 0.1);
+}
+
+.farm-docs-loader-card-info-size {
+    font: normal 14px 'Montserrat';
+    text-align: right;
+    color: rgba(31, 32, 65, 0.5);
+    margin: 10px 40px 10px 0;
+}
+
+.farm-docs-loader-card-info-size-mb {
+    font-weight: bold;
+}
+
+.farm-settings-box {
+    height: 25px;
+}
