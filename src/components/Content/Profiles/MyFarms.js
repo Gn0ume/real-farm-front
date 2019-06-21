@@ -4,6 +4,8 @@ import {queryMyFarms} from "../../queries/queries";
 import {Query} from "react-apollo";
 import FarmCard from "./FarmCard";
 import Icon from "material-icons-react";
+import PageHeader from "./PageHeader";
+import {Link} from "react-router-dom";
 
 class MyFarms extends React.Component {
     render() {
@@ -16,17 +18,23 @@ class MyFarms extends React.Component {
 
                     return (
                         <div>
-                            <div className="page-name-box">
-                                <span className="page-name">My Farms</span>
-                            </div>
+                            <PageHeader pagename="my farms"/>
                             <div className="farms-box">
                                 {farms.map((farm, key) => {
-                                   return <FarmCard key={key} farmname={farm.name} address={farm.address} photos={farm.photos}/>
+                                   return <FarmCard
+                                     key={key}
+                                     farmname={farm.name}
+                                     farmid={farm.id}
+                                     address={farm.address}
+                                     photos={farm.photos}/>
                                 })}
-                                <div className="farms-box-item new-farm">
-                                    <Icon className="material-icons md-48 md-dark" color="#FFB347" icon="add_circle_outline"/>
-                                    Add Farm
-                                </div>
+                                <Link to={`/edit_farm/`}>
+                                    <div className="farms-box-item new-farm">
+                                        <Icon className="material-icons md-48 md-dark" color="#FFB347" icon="add_circle_outline"/>
+                                        Add Farm
+                                    </div>
+                                </Link>
+
                             </div>
                         </div>
                     )

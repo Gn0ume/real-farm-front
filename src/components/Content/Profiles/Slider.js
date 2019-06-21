@@ -22,7 +22,7 @@ class Slider extends React.Component {
             slideItems[i] =
                 <div key={i}>
                 <img className={"slider slider" + (i + 1)}
-                     src={this.props.photos[i].url}
+                     src={this.props.photos[i].preview.url}
                      alt="farmFoto"/>;
                 </div>
         }

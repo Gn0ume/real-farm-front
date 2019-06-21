@@ -1,0 +1,16 @@
+.farm-data-address {
+    width: 753px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font: normal 14px 'Montserrat';
+    padding-left: 44px;
+}
+
+
+.addresspicker-container {
+    padding-top: 18px;
+}

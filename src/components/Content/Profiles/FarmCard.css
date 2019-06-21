@@ -1,20 +1,3 @@
-.page-name-box {
-    box-shadow: 0 1px 0 rgba(31, 32, 65, 0.1);
-    margin: 15px 23px;
-    position: relative;
-    height: 50px;
-}
-
-.page-name {
-    font: bold 48px 'Montserrat';
-    color: #0C0C0C;
-    margin-left: 123px;
-    background: #FFFFFF;
-    position: absolute;
-    top: 15px;
-    padding: 0 10px;
-}
-
 .farms-box-item {
     display: flex;
     flex-direction: column;
@@ -37,7 +20,7 @@
 .farm-settings-box {
     text-align: end;
     margin-right: 20px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .more {
