@@ -1,0 +1,143 @@
+.catalog-content {
+    display: flex;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 40px;
+
+}
+
+.catalog-content-sidebar {
+    width: 270px;
+    height: 100%;
+}
+
+.catalog-content-sidebar-filters {
+    box-sizing: border-box;
+    width: 270px;
+    background: #ffffff;
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+    padding: 11px;
+    margin-bottom: 17px;
+    border-radius: 4px;
+}
+
+.catalog-content-sidebar-filters-title > span {
+    font: bold 12px 'Montserrat';
+    text-transform: uppercase;
+    color: #1F2041;
+    width: 247px;
+    padding-bottom: 6px;
+    margin-right: 10px;
+
+}
+
+.catalog-content-sidebar-filters-title {
+    box-shadow: 0 1px 0 rgba(31, 32, 65, 0.1);
+}
+
+.category-picker-box {
+    overflow-x: auto;
+    white-space: nowrap;
+
+}
+
+.show-products-button {
+    width: 175px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #FFCC33 0%, #FFB347 100%);
+    border-radius: 22px;
+    text-transform: uppercase;
+    font: bold 12px 'Montserrat';
+    color: #ffffff;
+    border: none;
+    margin: 0 auto;
+}
+
+.reset-filters-button {
+    font: normal 14px 'Montserrat';
+    color: #000000;
+    display: block;
+    text-align: center;
+    margin-top: 7px;
+}
+
+.price-range {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.price-range-box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.price-range-box div {
+    position: relative;
+}
+
+.price-range-box input {
+    width: 100px;
+    box-sizing: border-box;
+    font: normal 14px 'Montserrat';
+}
+
+input[name="price_from"] {
+    padding-left: 45px;
+}
+
+input[name="price_to"] {
+    padding-left: 25px;
+}
+
+.price-range-box span {
+    font: normal 14px 'Montserrat';
+    color: #676878;
+    position: absolute;
+}
+
+.price-range-from,
+.price-range-to{
+    left: 6px;
+    top: 2px;
+}
+
+.checkbox-box {
+    margin-bottom: 15px;
+}
+
+.catalog-content-sidebar-filters label {
+    font: normal 14px 'Montserrat';
+    color: rgba(31, 32, 65, 0.75);
+}
+
+.catalog-content-sidebar-reviews {
+    width: 270px;
+    height: 350px;
+    border-radius: 4px;
+    background: #FFCC33;
+}
+
+.catalog-content-select-box {
+    text-align: right;
+    margin-right: 45px;
+}
+
+.products-per-page {
+    margin-left: 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    font: normal 14px 'Montserrat';
+    color: rgba(31, 32, 65, 0.75);
+}
+
+.catalog-content-items {
+    margin: 17px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+

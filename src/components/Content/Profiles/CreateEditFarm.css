@@ -9,29 +9,10 @@
     background: white;
 }
 
-.part-name {
-    font: normal 24px 'Montserrat';
-    text-transform: uppercase;
-    margin-left: 10px;
-}
-
-.part-name-container {
-    margin-top: 47px;
-    margin-bottom: 20px;
-}
-
 .farm-data-container {
     display: flex;
     width: 1292px;
     justify-content: space-between;
-}
-
-.form-fields-name {
-    font: bold 12px Montserrat;
-    text-transform: uppercase;
-    color: #1F2041;
-    margin-bottom: 5px;
-    margin-top: 18px;
 }
 
 .farm-data-map-container {
@@ -68,6 +49,7 @@
     width: 753px;
     height: 331px;
     border-radius: 4px;
+    overflow: hidden;
 }
 
 .farm-data-info-container {

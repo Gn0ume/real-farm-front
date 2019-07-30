@@ -7,6 +7,7 @@ import {withApollo} from "react-apollo";
 import DirectoryEditor from "./DirectoryEditor";
 import PageHeader from "./PageHeader";
 import RealFarmComponent from "./RealFarmComponent";
+import SectionName from "../SectionName";
 
 class CreateEditFarm extends RealFarmComponent {
   constructor(props) {
@@ -103,11 +104,7 @@ class CreateEditFarm extends RealFarmComponent {
           </div>
           <div className="create-edit-content">
             <div className="farm-data">
-              <div className="part-name-container">
-                <Icon className="material-icons md-24 md-dark more" color="#000000"
-                      icon="insert_drive_file"/>
-                <span className="part-name">farm registration data</span>
-              </div>
+              <SectionName partName="farm registration data"/>
               <div className="farm-data-container">
                 <div className="farm-data-map-container">
                   <AddressPicker
@@ -135,11 +132,7 @@ class CreateEditFarm extends RealFarmComponent {
               </div>
             </div>
             <div className="farm-docs">
-              <div className="part-name-container">
-                <Icon className="material-icons md-24 md-dark more" color="#000000"
-                      icon="insert_drive_file"/>
-                <span className="part-name">your farm documents</span>
-              </div>
+              <SectionName partName="your farm documents"/>
               {this.drawDirectories()}
             </div>
           </div>

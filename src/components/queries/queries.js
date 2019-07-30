@@ -138,50 +138,11 @@ const queryMyFarms = gql`
                     preview{
                         url
                     }
+                }
+            }
         }
-    }
-  }
 }
 `;
-
-// const queryAboutMyFarm = gql`
-//     {
-//   me {
-//     id
-//     farms {
-//       id
-//       name
-//       address
-//       photos {
-//         id
-//         name
-//         metaData
-//         url
-//         preview {
-//         url
-//         }
-//       }
-//       directories {
-//         id
-//         name
-//         allowedMimes
-//         capacity
-//         resources {
-//           id
-//           name
-//           type
-//           url
-//           metaData
-//           order
-//         }
-//       }
-//       description
-//       TIN
-//       geoPosition
-//     }
-//   }
-// }
-// `;
 
 const queryAboutMyFarm = gql`
  query (
@@ -319,6 +280,225 @@ const querySaveOrders = gql`
     }
 `;
 
+const queryMyGoods = gql`
+    {
+        me {
+            id
+            stocks {
+                id
+                farm {
+                    id
+                    name
+                }
+                name
+                quantity
+                updatedAt
+                description
+                photos {
+                   preview {
+                    url
+                    }               
+                }
+                price
+                currency
+                units
+                categoryId                
+             }
+         }
+     }
+`;
+
+const queryAboutProduct = gql`
+ query (
+    $id: GraphQLUUID! 
+    )   
+     {
+    stock (
+        id: $id
+    ) {
+      id
+      name
+      price
+      currency
+      quantity
+      description
+      units
+      categoryId 
+      farm {
+        id
+        name
+      }    
+      directories {
+        id
+        name
+        capacity
+        resources {
+          id
+          name
+          url
+          metaData
+          order
+          preview {
+            url
+          }        
+        }
+      }
+    }  
+}    
+`;
+
+const queryUpdateMyProduct = gql`
+    query (
+        $id: GraphQLUUID!
+        $name: String
+        $farmId: GraphQLUUID
+        $price: Float
+        $currency: Currency
+        $units: Unit
+        $categoryId: GraphQLUUID  
+        $description: String
+        $quantity: Int              
+    ) {
+            stock (
+                id: $id
+            ) {
+                id
+                update (
+                    name: $name
+                    farmId: $farmId
+                    price: $price
+                    currency: $currency
+                    units: $units
+                    categoryId: $categoryId  
+                    description: $description
+                    quantity: $quantity               
+                ) {
+                  id
+                  name
+                  quantity
+                  description
+                  price
+                  currency
+                  units
+                  categoryId  
+                  farm {
+                    id
+                    name
+                  }   
+                  directories {
+                    id
+                    name
+                    capacity
+                    resources {
+                      id
+                      name
+                      url
+                      metaData
+                      order
+                      preview {
+                        url
+                      }        
+                    }
+                  }    
+                }
+            }
+    }
+`;
+
+const queryGetMyFarms = gql`
+    {
+        me {
+            id
+            farms {
+              id
+              name
+              }
+            }
+     }
+`;
+
+const queryDeleteProduct = gql`
+    query (
+    $id: GraphQLUUID! 
+    ) {
+        stock (
+        id: $id
+        ) {
+            delete 
+        }
+    }
+`;
+
+const queryGetUnits = gql`
+{
+  __type(name: "Unit") {
+    name
+    kind
+    enumValues {
+      name
+    }
+  }
+}`;
+
+const queryAllGoods = gql`
+  query (
+    $page: Int! 
+    $perPage: Int!
+    $categories: [GraphQLUUID]
+    $priceRange: PriceRangeInput
+    )
+    {
+      stocks (
+        paginator: {
+           page: $page,
+           perPage: $perPage
+        }, 
+        filter: {
+          categories: $categories,
+          priceRange: $priceRange
+        }
+      ) {
+        filter {
+          categoriesJSON 
+          priceRange {
+            min
+            max
+          }
+        }
+        paginator {
+          page
+          totalPages
+        }
+        list {
+          id
+          name
+          price
+          currency
+          units
+          categoryId
+          quantity
+          photos {
+            preview {
+                url
+            }
+          }
+          farm {
+            id
+            name
+          }
+          updatedAt
+          description      
+        }
+      }
+  }  
+`;
+
+const queryAddNewStock = gql`
+mutation {
+        createStock {
+            id
+        }
+}`;
 
 export {
     loginUserMutation,
@@ -332,5 +512,13 @@ export {
     queryAboutNewResource,
     queryClearResource,
     queryUpdateMyFarm,
-    querySaveOrders
+    querySaveOrders,
+    queryMyGoods,
+    queryAboutProduct,
+    queryUpdateMyProduct,
+    queryGetMyFarms,
+    queryDeleteProduct,
+    queryGetUnits,
+    queryAllGoods,
+    queryAddNewStock
 }

@@ -1,0 +1,28 @@
+.items-list-container a {
+    text-decoration: none;
+}
+
+.items-list-box {
+    margin-right: 87px;
+    margin-left: 87px;
+}
+
+.items-list-button-box {
+    display: flex;
+    justify-content: center;
+}
+
+.items-list-add-button {
+    height: 44px;
+    width: 125px;
+    border-radius: 22px;
+    font: bold 12px 'Montserrat';
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 35px;
+    background: linear-gradient(180deg, #FFCC33 0%, #FFB347 100%);
+}

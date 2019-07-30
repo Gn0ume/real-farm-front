@@ -21,4 +21,7 @@ export const getToken = () => localStorage.getItem('token');
 
 export const getUserType = () => localStorage.getItem('user_type');
 
+export const getProductsPerPage = () => localStorage.getItem('productsPerPage');
+
 export const WIDTH_AVATAR = 300;
+export const PRODUCTS_PER_PAGE = 10;

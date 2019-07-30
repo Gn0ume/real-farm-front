@@ -47,7 +47,7 @@ const reducer = (state = initialState, action) => {
 
 const store = createStore(reducer);
 
-const client = new ApolloClient({
+export const apolloClient = new ApolloClient({
     uri: config.graphQlEndpoint,
     request: async operation => {
         const token = await localStorage.getItem('token');
@@ -71,6 +71,6 @@ const client = new ApolloClient({
     }
 });
 
-ReactDOM.render( <ApolloProvider client={client}><Provider store={store}><App/></Provider></ApolloProvider>, document.getElementById('root'));
+ReactDOM.render( <ApolloProvider client={apolloClient}><Provider store={store}><App/></Provider></ApolloProvider>, document.getElementById('root'));
 
 serviceWorker.unregister();
