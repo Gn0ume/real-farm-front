@@ -1,0 +1,11 @@
+.part-name-container {
+    display: flex;
+    margin-top: 47px;
+    margin-bottom: 20px;
+}
+
+.part-name {
+    font: normal 24px 'Montserrat';
+    text-transform: uppercase;
+    margin-left: 10px;
+}

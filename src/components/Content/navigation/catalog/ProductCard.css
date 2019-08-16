@@ -1,0 +1,90 @@
+.product-card {
+    position: relative;
+    width: 343px;
+    height: 364px;
+    background: #FFFFFF;
+    box-shadow: 0 10px 20px rgba(31, 32, 65, 0.1);
+    border-radius: 4px;
+    margin: 7px;
+}
+
+.product-card-price {
+    position: absolute;
+    top: 8px;
+    left: -4px;
+    width: 114px;
+    height: 44px;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    border-radius: 4px 22px 22px 4px;
+    font: normal 19px 'Quicksand';
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.slider {
+    background: #FFC03D;
+    height: 213px;
+    width: inherit;
+    border-radius: 4px 4px 0 0;
+}
+
+.product-card-info {
+    height: 151px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 23px 19px 23px;
+}
+
+.product-card-info-name {
+    font: bold 19px 'Quicksand';
+    color: #1F2041;
+}
+
+.product-card-info-section {
+    font: normal 14px 'Montserrat';
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 17px;
+}
+
+.product-card-info-section img {
+    margin-right: 5px;
+}
+
+.product-card-button-panel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-card-button-panel button {
+    height: 44px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.add-to-cart-button {
+    width: 144px;
+    font: bold 12px 'Montserrat';
+    text-transform: uppercase;
+    color: #FFB347;
+    border-radius: 22px;
+    border: 1px solid #FFB347;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-to-favorite-button {
+    width: 44px;
+    border-radius: 50%;
+    outline: none;
+    border: 2px solid #C7C7CF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

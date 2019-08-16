@@ -1,0 +1,125 @@
+.items-list-card-container {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: start;
+
+}
+
+.items-list-card-preview {
+    height: 130px;
+    width: 209px;
+    /*background: #FFCC33;*/
+}
+
+.items-list-card-maininfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 29px;
+    width: 242px;
+    box-sizing: border-box;
+}
+
+.items-list-card-maininfo-name {
+    font: bold 24px 'Quicksand';
+    color: #1F2041;
+}
+
+.items-list-card-maininfo-category {
+    font: normal 14px 'Montserrat';
+    color: rgba(31, 32, 65, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+.items-list-card-maininfo-price {
+    font: normal 30px 'Quicksand';
+    color: #FFB347;
+}
+
+.items-list-card-description {
+    width: 354px;
+    font: normal 14px 'Quicksand';
+    color: #000000;
+    margin: 0;
+    padding-right: 18px;
+    padding-left: 18px;
+}
+
+.items-list-card-stockinfo {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.items-list-card-stockinfo-qty {
+    font: bold 24px 'Quicksand';
+    color: #1F2041;
+}
+
+.items-list-card-stockinfo-qty > span,
+.items-list-card-stockinfo-farm > span {
+    font-weight: normal;
+    color: #1F2041;
+}
+
+.items-list-card-stockinfo-farm {
+    font: bold 24px 'Quicksand';
+    color: #7fffd4;
+}
+
+.items-list-card-date-and-button {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.items-list-card-date {
+    display: flex;
+    align-items: center;
+    font: normal 14px 'Montserrat';
+    color: rgba(31, 32, 65, 0.5);
+
+}
+
+.items-list-card-date > span {
+    font: normal 14px 'Montserrat';
+    color: rgba(31, 32, 65, 0.3);
+    margin-left: 6px;
+}
+
+.items-list-card-buttons-panel {
+    display: flex;
+    margin-top: 30px;
+}
+
+.items-list-card-buttons-panel > a {
+    width: 99px;
+    margin-right: 8px;
+    background: linear-gradient(180deg, #FFCC33 0%, #FFB347 100%);
+    border-radius: 22px;
+}
+
+.items-list-card-buttons-panel button {
+    height: 44px;
+    border-radius: 22px;
+    font: bold 12px 'Montserrat';
+    text-transform: uppercase;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.items-list-card-buttons-panel .edit-button {
+    width: 99px;
+    margin-right: 8px;
+    background: linear-gradient(180deg, #FFCC33 0%, #FFB347 100%);
+}
+
+.items-list-card-buttons-panel .delete-button {
+    width: 125px;
+    background: linear-gradient(180deg, #FE6654 0%, #C55F53 100%);
+}

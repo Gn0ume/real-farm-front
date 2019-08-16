@@ -14,6 +14,15 @@
     top: 15px;
     padding: 0 10px;
     text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-name-box-icon {
+    height: 45px;
+    width: 45px;
+    margin-right: 5px;
 }
 
 .head_button {
@@ -41,6 +50,10 @@
 
 .head_button a {
     text-decoration: none;
+}
+
+.head_button img {
+    margin-right: 5px;
 }
 
 .save_changes_button {

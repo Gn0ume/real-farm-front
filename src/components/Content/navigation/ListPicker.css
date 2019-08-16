@@ -1,0 +1,16 @@
+.listpicker-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.listpicker-select {
+    width: 320px;
+    height: 44px;
+    border-radius: 4px;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    font: normal 14px 'Montserrat';
+    color: rgba(31, 32, 65, 0.75);
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+

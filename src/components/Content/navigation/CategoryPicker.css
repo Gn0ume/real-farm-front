@@ -1,0 +1,10 @@
+.filter-item {
+   display: flex;
+    align-items: center;
+}
+
+.filter-item > span {
+    font: normal 14px 'Montserrat';
+    color: #676878;
+    text-transform: capitalize;
+}

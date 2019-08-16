@@ -1,0 +1,29 @@
+.catalog-content-paginator-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginator-arrow {
+    height: 24px;
+}
+
+.paginator-page {
+    width: 23px;
+    height: 23px;
+    font: normal 18px 'Montserrat';
+    color: #676878;
+    padding: 5px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.paginator-page-selected {
+    color: #ffffff;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+}
+
+.invisible {
+    visibility: hidden;
+}

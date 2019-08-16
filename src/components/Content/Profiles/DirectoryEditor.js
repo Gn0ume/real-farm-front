@@ -80,10 +80,9 @@ class DirectoryEditor extends React.Component {
       }
     }
     this.setState({resources: arr})
-  }
+  };
 
   onSortEnd({oldIndex, newIndex}) {
-    console.log(this.state.resources)
     let newResArray = arrayMove(this.state.resources, oldIndex, newIndex);
     for (let i = 0; i < newResArray.length; i++) {
       newResArray[i].order = i+1;
@@ -97,7 +96,6 @@ class DirectoryEditor extends React.Component {
       elem.order = newResArray[i].order;
       arrOfOrders.push(elem);
     }
-    console.log(arrOfOrders);
     this.props.client.query({
       query: querySaveOrders,
       fetchPolicy: 'no-cache',
@@ -114,6 +112,10 @@ class DirectoryEditor extends React.Component {
       })
   }
 
+  getClassesForDate() {
+    return (this.state.resources.length === 0) ? "hidden" : " "
+  }
+
   getLastUpdate() {
     let dates = [];
     for (let i=0; i < this.state.resources.length; i++) {
@@ -128,7 +130,7 @@ class DirectoryEditor extends React.Component {
 
   render() {
     const DragHandle = SortableHandle(() =>
-        <img src={move_icon} className="move-icon" />
+        <img src={move_icon} className="move-icon" alt="move+icon"/>
       );
 
     const SortableItem = SortableElement(({resource}) => {
@@ -175,7 +177,7 @@ class DirectoryEditor extends React.Component {
                         Farm <span className="capitalize">{this.props.directory.name.toLowerCase()}</span>
                     </span>
         </div>
-        <div className="farm-docs-loader-data-box">
+        <div className= {`farm-docs-loader-data-box ${this.getClassesForDate()}`}>
           <Icon className="material-icons md-24 md-dark more" color="lightgray" icon="event"/>
           <span className="farm-docs-loader-date">{this.getLastUpdate()}</span>
           <span className="farm-docs-loader-last-update">(last update)</span>

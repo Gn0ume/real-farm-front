@@ -36,6 +36,11 @@ class AuthPanel extends React.Component {
                 link: "#"
             },
             {
+                text: "My Goods",
+                link: "/items_list"
+            },
+
+            {
                 text: "Help",
                 link: "#"
             }

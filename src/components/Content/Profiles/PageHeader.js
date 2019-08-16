@@ -8,7 +8,7 @@ import save_change_icon from "../../../img/icons/save_change_icon.svg";
 const PageHeader = (props) => {
   const getIcon = () => {
     return props.changed ?
-      <img src={done_icon} alt="done_icon"/> : <img src={save_change_icon} alt="done_icon"/>
+      <img src={save_change_icon} alt="done_icon"/> : <img src={done_icon} alt="done_icon"/>
   };
 
   const leavePage = () => {
@@ -25,7 +25,11 @@ const PageHeader = (props) => {
   return(
     <div className="page-name-box">
       <div className="farm-name-box">
-        <span className="page-name">{props.pagename}</span>
+
+        <div className="page-name">
+          {props.icon &&
+          <img className="page-name-box-icon" src={props.icon} alt=""/>}
+          {props.pagename}</div>
         {props.inputName &&
         <NameEditComponent
           placeholder="Farm Name"
