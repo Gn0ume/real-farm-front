@@ -8,70 +8,14 @@ import CategoryPicker from "../CategoryPicker";
 import location from "../../../../img/icons/location.svg";
 import {queryAllGoods} from "../../../queries/queries";
 import Paginator from "./Paginator";
+import {PRODUCTS_PER_PAGE, PER_PAGE, getProductsPerPage} from "../../../../constants";
 import './Catalog.css';
-import { PRODUCTS_PER_PAGE, getProductsPerPage } from "../../../../constants";
-import ListPicker from "../ListPicker";
 
 class Catalog extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
-    this.cats = {
-      name: "root",
-      isOpened: true,
-      children: [
-        {
-          name: "meal",
-          isOpened: true,
-          children: [
-            {
-              name: "pork",
-              isOpened: false,
-              children: []
-            },
-            {
-              name: "chicken",
-              isOpened: false,
-              children: []
-            }
-          ]
-        },
-        {
-          name: "fruits",
-          isOpened: true,
-          children: [
-            {
-              name: "apples",
-              isOpened: false,
-              children: [
-                {
-                  name: "antonovka",
-                  isOpened: false,
-                  children: [
-                    {
-                      name: "antonovka first cort",
-                      isOpened: false,
-                      children: []
-                    }
-                  ]
-                },
-                {
-                  name: "golden",
-                  isOpened: false,
-                  children: []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: "dairy",
-          isOpened: false,
-          children: []
-        }
-      ]
-    };
     this.state = {
       isReady: false,
       forFilter: {
@@ -82,12 +26,6 @@ class Catalog extends React.Component {
         categories: []
       }
     };
-
-    this.filters = {
-      price_from: null,
-      price_to: null
-    };
-    this.categories = JSON.stringify(this.cats);
   }
 
   componentDidMount() {
@@ -100,9 +38,7 @@ class Catalog extends React.Component {
       }
     })
       .then(({data}) => {
-        this.setState({...data.stocks, isReady: true})
-        console.log(this.state)
-
+        this.setState({...data.stocks, isReady: true});
       })
       .catch(error => {
         console.log(error)
@@ -116,11 +52,10 @@ class Catalog extends React.Component {
       variables: {
         page: this.state.forFilter.page,
         perPage: +this.state.forFilter.perPage
-
       }
     })
       .then(({data}) => {
-        this.setState({...data.stocks, isReady: true})
+        this.setState({...data.stocks, isReady: true});
         console.log(this.state)
 
       })
@@ -151,9 +86,24 @@ class Catalog extends React.Component {
     this.setState({forFilter: {...this.state.forFilter, [name]: value}});
   }
 
+  getOptions() {
+    const userChoice = localStorage.getItem('productsPerPage');
+    const isSelected = userChoice ? userChoice : PRODUCTS_PER_PAGE;
+
+    return PER_PAGE.map(item => {
+        return <option key={item}
+                       value={item}
+                       selected={+item === +isSelected}>
+          {item}
+        </option>
+      }
+    )
+  }
+
   render() {
     return (
       <div>
+        Текущий язык {this.props.match.params.language}
         <PageHeader
           pagename="catalog"
           icon={store}/>
@@ -189,7 +139,7 @@ class Catalog extends React.Component {
                 </div>
               </div>
               <button className="show-products-button"
-              onClick={this.applyFilter}>
+                      onClick={this.applyFilter}>
                 <img src={location} alt=""/>
                 show products
               </button>
@@ -207,12 +157,7 @@ class Catalog extends React.Component {
               <select className="products-per-page"
                       name="perPage"
                       onChange={this.handleChange}>
-                <option value="2">2</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
+                {this.getOptions()}
               </select>
             </div>
             <div className="catalog-content-items">

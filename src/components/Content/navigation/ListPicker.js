@@ -17,11 +17,15 @@ class ListPicker extends React.Component {
 
   getOption(value) {
     let options = [];
-    options.push(<option disabled>{`Select ${this.props.listName}...`}</option>);
+
+    // options.push(<option disabled selected hidden>{`Select ${this.props.listName}...`}</option>);
     for (let i = 0; i < this.state.list.length; i++) {
+      console.log(this.state.list[i][value])
+      console.log(this.state.list[i][value] === this.props.selectedItem)
+
       options.push(
         <option key={i + 1}
-                selected={this.state.list[i][value] === this.props.selectedItem ? 'selected' : ''}
+                selected={this.state.list[i][value] === this.props.selectedItem}
                 value={this.state.list[i][value]}>
           {this.state.list[i].name}
         </option>
@@ -41,6 +45,7 @@ class ListPicker extends React.Component {
         <span className="form-fields-name">{this.props.listName}</span>
         <select className="listpicker-select"
                 name={this.props.nameForUpdate}
+                defaultValue={`Select ${this.props.listName}...`}
                 onChange={this.changeValue}>
           {this.getOption(this.props.compareValue)}
         </select>

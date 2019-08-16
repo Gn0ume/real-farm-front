@@ -20,15 +20,7 @@ class CategoryPicker extends React.Component {
   }
 
   getChildren(children) {
-    let allChildren = [];
-    for (let i = 0; i < children.length; i++) {
-      allChildren[i] =
-
-      <CategoryPicker
-     categories={children[i]}
-      />
-    }
-    return allChildren;
+    return children.map(item => <CategoryPicker key={item.id} categories={item} />)
   }
 
   render() {

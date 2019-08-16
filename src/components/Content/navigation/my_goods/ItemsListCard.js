@@ -9,6 +9,7 @@ import event from '../../../../img/icons/event.svg';
 import folder from '../../../../img/icons/folder.svg'
 import noPhoto from '../../../../img/no_photo.jpg'
 import {queryDeleteProduct} from "../../../queries/queries";
+import {CURRENCY_SIGN} from "../../../../constants";
 import './ItemsListCard.css';
 
 class ItemsListCard extends React.Component {

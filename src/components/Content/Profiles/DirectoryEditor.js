@@ -130,7 +130,7 @@ class DirectoryEditor extends React.Component {
 
   render() {
     const DragHandle = SortableHandle(() =>
-        <img src={move_icon} className="move-icon" />
+        <img src={move_icon} className="move-icon" alt="move+icon"/>
       );
 
     const SortableItem = SortableElement(({resource}) => {

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import './NameEditComponent.css'
 
 const NameEditComponent = (props) => {
@@ -22,7 +22,7 @@ const NameEditComponent = (props) => {
 
     const mouseUpHandler = (event) => {
         console.log(window.getSelection().toString());
-    }
+    };
 
     return(
       <div>

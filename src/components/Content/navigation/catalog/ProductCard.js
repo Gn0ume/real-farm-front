@@ -1,24 +1,26 @@
 import React from 'react';
+
 import './ProductCard.css';
 import Slider from "../../Profiles/Slider";
 import cart from '../../../../img/icons/shopping_cart.svg';
 import favorite from '../../../../img/icons/favorite.svg';
 import folder from '../../../../img/icons/folder.svg';
+import {CURRENCY_SIGN, METRIC_SYSTEM} from "../../../../constants";
 
 class ProductCard extends React.Component {
   render() {
+    const {product} = this.props;
     return (
       <div className="product-card">
         <div className="slider">
-          {console.log(this.props)}
-          <img src={this.props.product.photo} width={343} height={213} alt=""/>
+          <img src={product.photo} width={343} height={213} alt=""/>
         </div>
         {/*<Slider/>*/}
         <div className="product-card-price">
-          {this.props.product.currency}{this.props.product.price}/{this.props.product.units}
+          {CURRENCY_SIGN[product.currency]} {product.price} / {METRIC_SYSTEM[product.units]}
         </div>
         <div className="product-card-info">
-          <span className="product-card-info-name">{this.props.product.name}</span>
+          <span className="product-card-info-name">{product.name}</span>
           <div className="product-card-info-section">
             <img src={folder} alt=""/>
              <span>Meat / Beef</span>
