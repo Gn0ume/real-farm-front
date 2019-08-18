@@ -1,6 +1,6 @@
 import React from 'react';
 import './FormSignIn.css';
-import user from "../../svg/user.svg";
+import user from "../../img/svg/user.svg";
 import {connect} from 'react-redux';
 import {loginUserMutation} from "../queries/queries";
 import {compose, withApollo} from "react-apollo";

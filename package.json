@@ -5,10 +5,11 @@
   "dependencies": {
     "apollo-boost": "^0.3.1",
     "array-move": "^2.1.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "graphql": "^14.2.1",
     "material-icons-react": "^1.0.4",
     "moment": "^2.24.0",
+    "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-apollo": "^2.5.4",
     "react-dom": "^16.8.6",

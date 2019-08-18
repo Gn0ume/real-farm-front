@@ -1,51 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import folder from '../../../img/icons/folder.svg';
 import './CategoryPicker.css';
+import Folder from "./Folder/Folder";
 
-class CategoryPicker extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
-  }
-
-  componentWillMount() {
-    this.setState({...this.props.categories});
-  }
-
-  toggle(event) {
-    if (this.state.children.length === 0) {
-
-    }
-    this.setState({isOpened: !this.state.isOpened})
-  }
-
-  getChildren(children) {
-    return children.map(item => <CategoryPicker key={item.id} categories={item} />)
-  }
-
-  render() {
-    const folders = this.state;
-    return(
-      <div>
-        {console.log("State of ", folders.name, "= ", this.state)}
-        {folders.name !== "ROOT" &&
-        <div className="filter-item"  onClick={(event) => this.toggle(event)}>
-          <img src={folder} alt=""/>
-          <span>{folders.name}</span>
-        </div>
-        }
-        {
-            folders.children !== undefined &&
-            <ul>
-            {this.getChildren(folders.children)}
-          </ul>
-        }
-
-
-      </div>
-
-    )
-  }
-}
+const CategoryPicker = ({categoriesTree = {}, checkedCategories = [], onChange}) => {
+  const [categoriesList, setCategoriesList] = useState(checkedCategories);
+  return (
+    <Folder checkedCategories={categoriesList} folderObject={categoriesTree} onListChange={newList => setCategoriesList(newList)}/>
+  )
+};
 
 export default CategoryPicker

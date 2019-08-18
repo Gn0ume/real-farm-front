@@ -26,7 +26,6 @@ class DirectoryEditor extends React.Component {
     const formData = new FormData();
     formData.append('directoryId', directoryId);
     formData.append('files[]', file);
-    console.log(config.serverAddress)
     return axios({
       url: `${config.serverAddress}/uploadToDirectory`,
       method: 'POST',

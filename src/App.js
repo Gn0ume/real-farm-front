@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Redirect, Route} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 
 import './App.css';
@@ -20,7 +20,6 @@ class App extends React.Component {
                 query: queryMe
             })
                 .then(data => {
-                    console.log('get me info');
                     const dispatch = this.props.dispatch;
                     const infoAuthUser = {type: 'infoAuthUser', payload: data.data.me};
                     dispatch(infoAuthUser);
@@ -29,10 +28,11 @@ class App extends React.Component {
     };
 
     static isFarmer() {
+        console.log('hi')
         return (getToken() && getUserType() === "FARMER") ? (
             <MyFarms />
         ) : (
-            <Redirect to="/"/>
+            <Redirect to={`${this.props.globalLanguage}/`}/>
         )
     }
 
@@ -40,6 +40,9 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <div className="main-page">
+                    <Route exact path="/" render={() => (
+                      <Redirect to="/en/"/>
+                    )}/>
                     <Route path="/:language" component={MainContent}/>
                 </div>
             </BrowserRouter>

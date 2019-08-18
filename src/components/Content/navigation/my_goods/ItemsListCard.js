@@ -1,6 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import moment from 'moment';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {withApollo} from 'react-apollo';
 
 import edit from '../../../../img/icons/edit.svg';
@@ -82,12 +83,12 @@ class ItemsListCard extends React.Component {
             <span>(last update)</span>
           </span>
           <div className="items-list-card-buttons-panel">
-            <Link to={`/farm_item/${this.props.stock.id}`}>
+            <NavLink to={`/farm_item/${this.props.stock.id}`}>
               <button className="edit-button">
                 <img src={edit} alt=""/>
                 edit
               </button>
-            </Link>
+            </NavLink>
             <button className="delete-button"
             onMouseDown={this.handleRemoveItem}>
               <img src={delete_icon} alt=""/>
@@ -104,4 +105,10 @@ class ItemsListCard extends React.Component {
 
 }
 
-export default withApollo(ItemsListCard)
+const putStateToProps = (state) => {
+  return {
+    globalLanguage: state.globalLanguage
+  }
+};
+
+export default withApollo(connect(putStateToProps)(ItemsListCard))

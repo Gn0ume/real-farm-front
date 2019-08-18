@@ -1,44 +1,81 @@
 import React from "react";
 import {withApollo} from "react-apollo";
+import {withRouter} from "react-router-dom";
+import queryString from "query-string"
 
 import PageHeader from "../../Profiles/PageHeader";
 import ProductCard from "./ProductCard";
 import store from '../../../../img/icons/store.svg';
-import CategoryPicker from "../CategoryPicker";
-import location from "../../../../img/icons/location.svg";
 import {queryAllGoods} from "../../../queries/queries";
-import Paginator from "./Paginator";
-import {PRODUCTS_PER_PAGE, PER_PAGE, getProductsPerPage} from "../../../../constants";
+import {PRODUCTS_PER_PAGE, PER_PAGE} from "../../../../constants";
 import './Catalog.css';
+import Filter from "../../../Filter/Filter";
 
 class Catalog extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
-    this.state = {
-      isReady: false,
-      forFilter: {
-        perPage: 0,
+    let filtrationValues = {
+      filter: {},
+      paginator: {
         page: 1,
-        priceRangeMin: 0,
-        priceRangeMax: 0,
-        categories: []
+        perPage: 10
       }
     };
+    if (props.location.search !== ""){
+      const searchParameters = queryString.parse(props.location.search);
+      filtrationValues = {
+        filter: {
+          categories: searchParameters.categories,
+          priceRange: {
+            min: searchParameters.minPrice,
+            max: searchParameters.maxPrice,
+          }
+        },
+        paginator: {
+          page: searchParameters.page,
+          perPage: searchParameters.perPage
+        }
+      }
+    }
+    this.state = {
+      isReady: false,
+      list: [],
+      filtration: {
+        data: {
+          filter: null,
+          paginator: null
+        },
+        value: filtrationValues
+      },
+    };
+
   }
 
   componentDidMount() {
+    const filterValues = this.state.filtration.value;
     this.props.client.query({
       query: queryAllGoods,
       fetchPolicy: 'no-cache',
       variables: {
-        page: this.state.forFilter.page,
-        perPage: +(getProductsPerPage() ? getProductsPerPage() : PRODUCTS_PER_PAGE)
+        page: filterValues.paginator.page,
+        perPage: filterValues.paginator.perPage,
+        categories: filterValues.filter.categories,
+        priceRange: filterValues.filter.priceRange
       }
     })
       .then(({data}) => {
-        this.setState({...data.stocks, isReady: true});
+        const stateCopy = {...this.state};
+        stateCopy.list = data.stocks.list;
+        stateCopy.filtration.data.filter = {
+          categories: JSON.parse(data.stocks.filter.categoriesJSON),
+          priceRange: data.stocks.filter.priceRange
+        };
+        stateCopy.filtration.data.paginator = data.stocks.paginator;
+        stateCopy.isReady = true;
+        console.log(stateCopy)
+        this.setState(stateCopy);
       })
       .catch(error => {
         console.log(error)
@@ -50,8 +87,8 @@ class Catalog extends React.Component {
       query: queryAllGoods,
       fetchPolicy: 'no-cache',
       variables: {
-        page: this.state.forFilter.page,
-        perPage: +this.state.forFilter.perPage
+        page: this.state.filters.page,
+        perPage: +this.state.filters.perPage
       }
     })
       .then(({data}) => {
@@ -65,7 +102,7 @@ class Catalog extends React.Component {
   }
 
 
-  getProductCard() {
+  getProductsList() {
     let items = [];
     for (let i = 0; i < this.state.list.length; i++) {
       items.push(
@@ -83,7 +120,7 @@ class Catalog extends React.Component {
     if (name === "perPage") {
       localStorage.setItem('productsPerPage', value)
     }
-    this.setState({forFilter: {...this.state.forFilter, [name]: value}});
+    this.setState({filters: {...this.state.filters, [name]: value}});
   }
 
   getOptions() {
@@ -103,53 +140,16 @@ class Catalog extends React.Component {
   render() {
     return (
       <div>
-        Текущий язык {this.props.match.params.language}
         <PageHeader
           pagename="catalog"
           icon={store}/>
         {this.state.isReady &&
         <div className="catalog-content">
           <div className="catalog-content-sidebar">
-            <div className="catalog-content-sidebar-filters">
-              <div className="catalog-content-sidebar-filters-title">
-                <span>categories</span>
-              </div>
-              {console.log(JSON.parse(this.state.filter.categoriesJSON))}
-              <div className="category-picker-box">
-                <CategoryPicker
-                  categories={JSON.parse(this.state.filter.categoriesJSON)}/>
-              </div>
-              <div className="price-range">
-                <span className="form-fields-name">price</span>
-                <div className="price-range-box">
-                  <div>
-                    <span className="price-range-from">from</span>
-                    <input name="price_from"
-                           type="text"
-                           value={this.state.filter.priceRange.min}
-                           onChange={this.handleChange}/>
-                  </div>
-                  <div>
-                    <span className="price-range-to">to</span>
-                    <input name="price_to"
-                           type="text"
-                           value={this.state.filter.priceRange.max}
-                           onChange={this.handleChange}/>
-                  </div>
-                </div>
-              </div>
-              <button className="show-products-button"
-                      onClick={this.applyFilter}>
-                <img src={location} alt=""/>
-                show products
-              </button>
-              <a href="#" className="reset-filters-button">Reset Filters</a>
-            </div>
+            <Filter data={this.state.filtration.data.filter} value={this.state.filtration.value.filter}/>
             <div className="catalog-content-sidebar-reviews">
               <span>reviews</span>
-
             </div>
-
           </div>
           <div>
             <div className="catalog-content-select-box">
@@ -161,11 +161,11 @@ class Catalog extends React.Component {
               </select>
             </div>
             <div className="catalog-content-items">
-              {this.getProductCard()}
+              {this.getProductsList()}
             </div>
-            <Paginator
-              currentPage={this.state.paginator.page}
-              totalPages={this.state.paginator.totalPages}/>
+            {/*<Paginator*/}
+              {/*currentPage={this.state.paginator.page}*/}
+              {/*totalPages={this.state.paginator.totalPages}/>*/}
           </div>
         </div>
         }
@@ -174,4 +174,4 @@ class Catalog extends React.Component {
   }
 }
 
-export default withApollo(Catalog)
+export default withRouter(withApollo(Catalog))

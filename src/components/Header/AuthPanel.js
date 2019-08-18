@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import default_avatar from '../../img/imageAvatar.jpg';
 import Icon from "material-icons-react";
 import {menuHeader} from '../../constants';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 class AuthPanel extends React.Component {
     chooseAvatar () {
@@ -13,7 +13,7 @@ class AuthPanel extends React.Component {
     };
 
     choosePage() {
-        return (this.props.authUser.type === "FARMER" ? "/farmer" : "/catalog")
+        return (this.props.authUser.type === "FARMER" ? `/${this.props.globalLanguage}/farmer` : `/${this.props.globalLanguage}/catalog`)
     };
 
     chooseName() {
@@ -54,9 +54,9 @@ class AuthPanel extends React.Component {
                     <div className="element_after"/>
                     <div className="user-box">
                     <Icon className="material-icons md-24 md-dark" color="grey" icon="expand_more"/>
-                    <Link to={this.choosePage()} className="username"><span>{this.chooseName()}</span></Link>
+                    <NavLink to={this.choosePage()} className="username"><span>{this.chooseName()}</span></NavLink>
                     <Icon className="material-icons md-24 md-dark" color="grey" icon="chat"/>
-                        <Link to="/profile"><img src={this.chooseAvatar()} alt="avatar" className="avatar"/></Link>
+                        <NavLink to={`/${this.props.globalLanguage}/profile`}><img src={this.chooseAvatar()} alt="avatar" className="avatar"/></NavLink>
                     </div>
                 </div>
                 <div className="bottom-menu">
@@ -80,7 +80,8 @@ class AuthPanel extends React.Component {
 
 const putStateToProps = (state) => {
     return {
-        authUser: state.authUser
+        authUser: state.authUser,
+        globalLanguage: state.globalLanguage
     }
 };
 

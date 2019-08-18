@@ -2,10 +2,10 @@ import React from 'react';
 import './Footer.css';
 import Logo from '../Header/Logo';
 import MenuFooter from './MenuFooter';
-import twit from '../../svg/icon_twitter.svg';
-import fb from '../../svg/icon_facebook.svg';
-import insta from '../../svg/icon_instagram.svg';
-import vk from '../../svg/icon_vkontakte.svg';
+import twit from '../../img/svg/icon_twitter.svg';
+import fb from '../../img/svg/icon_facebook.svg';
+import insta from '../../img/svg/icon_instagram.svg';
+import vk from '../../img/svg/icon_vkontakte.svg';
 
 class Footer extends React.Component {
 

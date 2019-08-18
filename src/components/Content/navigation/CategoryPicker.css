@@ -1,6 +1,7 @@
 .filter-item {
    display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .filter-item > span {

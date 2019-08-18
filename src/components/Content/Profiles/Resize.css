@@ -31,7 +31,7 @@
     border-radius: 50%;
     border: solid transparent 1px;
     box-sizing: border-box;
-    cursor: pointer;
+    cursor: move;
 }
 
 .rectangles-crop {
@@ -45,25 +45,25 @@
 .top-left {
     top: -7px;
     left: -7px;
-    cursor: pointer;
+    cursor: nw-resize;
 }
 
 .top-right {
     top: -7px;
     right: -7px;
-    cursor: pointer;
+    cursor: ne-resize;
 }
 
 .bottom-left {
     bottom: -6px;
     left: -7px;
-    cursor: pointer;
+    cursor: sw-resize;
 }
 
 .bottom-right {
     bottom: -6px;
     right: -7px;
-    cursor: pointer;
+    cursor: se-resize;
 }
 
 #crop-element-container {

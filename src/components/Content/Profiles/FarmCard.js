@@ -1,8 +1,9 @@
 import React from "react";
+import {connect} from 'react-redux';
 import './FarmCard.css';
 import Icon from "material-icons-react";
 import Slider from './Slider';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 
 class FarmCard extends React.Component {
@@ -12,11 +13,11 @@ class FarmCard extends React.Component {
                 <Slider photos={this.props.photos}/>
                 <div className="farms-box-item-info">
                     <div className="farm-settings-box">
-                        <Link to={`/edit_farm/${this.props.farmid}`}>
+                        <NavLink to={`/${this.props.globalLanguage}/edit_farm/${this.props.farmid}`}>
                             <Icon className="material-icons md-24 md-dark more"
                                   color="#8f90a0"
                                   icon="edit"/>
-                        </Link>
+                        </NavLink>
                     </div>
                     <span className="farm-name">{this.props.farmname}</span>
                     <span className="farm-address">
@@ -31,4 +32,10 @@ class FarmCard extends React.Component {
     }
 }
 
-export default FarmCard
+const putStateToProps = (state) => {
+    return {
+        globalLanguage: state.globalLanguage
+    }
+};
+
+export default connect(putStateToProps)(FarmCard);

@@ -17,3 +17,7 @@
     margin-right: 29px;
     color: #676878;
 }
+
+.menu_items a.active {
+    font-weight: bolder;
+}

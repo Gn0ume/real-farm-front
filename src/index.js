@@ -18,7 +18,8 @@ const initialState = {
     authUser: {
         id: ""
 
-    }
+    },
+    globalLanguage: ""
 };
 
 const reducer = (state = initialState, action) => {
@@ -39,7 +40,9 @@ const reducer = (state = initialState, action) => {
         case 'passedUserSignIn':
             return {...state, passedUserSignIn: true};
         case 'infoAuthUser':
-            return {...state, authUser: action.payload}
+            return {...state, authUser: action.payload};
+        case  'setGlobalLanguage':
+            return {...state, globalLanguage: action.payload};
 
     }
     return state;
@@ -58,6 +61,10 @@ export const apolloClient = new ApolloClient({
         });
     },
     onError: ({ graphQLErrors, response }) => {
+        if(!response){
+            console.log('Критическая ошибка при обращении к серверу')
+            return;
+        }
         response.errors = null;
         graphQLErrors.map( error => {
             switch (error.code) {

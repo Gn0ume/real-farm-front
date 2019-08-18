@@ -1,13 +1,10 @@
 import React from 'react';
-import {Link, Redirect} from "react-router-dom";
-import {compose, graphql, withApollo} from 'react-apollo';
+import {graphql, withApollo} from 'react-apollo';
 
 import PageHeader from "../../Profiles/PageHeader";
 import ItemsListCard from "./ItemsListCard";
-import {queryMyGoods, queryAddNewStock, createUserMutation} from "../../../queries/queries";
+import {queryMyGoods, queryAddNewStock} from "../../../queries/queries";
 import './ItemsList.css'
-import FarmModel from "../../../Models/Farm.model";
-import {connect} from "react-redux";
 
 class ItemsList extends React.Component {
   constructor(props) {

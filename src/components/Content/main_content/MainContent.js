@@ -1,8 +1,6 @@
 import React from 'react';
-import {BrowserRouter, Redirect, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import {connect} from 'react-redux';
-
-// import './Content.css';
 import Header from "../../Header/Header";
 import Catalog from "../navigation/catalog/Catalog";
 import Home from "../navigation/Home";
@@ -21,27 +19,32 @@ import App from "../../../App"
 
 
 class MainContent extends React.Component {
+    constructor(props){
+        super(props);
+        props.dispatch({
+            type: 'setGlobalLanguage',
+            payload: props.match.params.language
+        })
+    }
     render() {
+        const path = this.props.match.path;
         return <div>
-            Язык
-            {this.props.match.params.language}
             <Header/>
-            <BrowserRouter>
-                <div className="main-content">
-                    <Route path={`${this.props.match.path}/catalog`} component={Catalog}/>
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/news" component={News}/>
-                    <Route path="/documentation" component={Documents}/>
-                    <Route path="/who_we_are" component={WhoWeAre}/>
-                    <Route path="/our_team" component={OurTeam}/>
-                    <Route path="/for_investors" component={ForInvestors}/>
-                    <Route path="/farmer" render={() => (App.isFarmer())}/>
-                    <Route path="./profile" component={Profile}/>
-                    <Route path="/edit_farm/:id" component={CreateEditFarm}/>
-                    <Route path={`${this.props.match.path}/items_list`} component={ItemsList}/>
-                    <Route path="/farm_item/:id" component={FarmItemForm}/>
-                </div>
-            </BrowserRouter>
+            <div className="main-content">
+                <Route exact path={`/${this.props.match.params.language}`} component={Home}/>
+                <Route path={`${path}/catalog/:filters`} component={Catalog}/>
+                <Route exact path={`${path}/catalog`} component={Catalog}/>
+                <Route path={`${path}/news`} component={News}/>
+                <Route path={`${path}/documentation`} component={Documents}/>
+                <Route path={`${path}/who_we_are`} component={WhoWeAre}/>
+                <Route path={`${path}/our_team`} component={OurTeam}/>
+                <Route path={`${path}/for_investors`} component={ForInvestors}/>
+                <Route path={`${path}/farmer`} render={() => (App.isFarmer())}/>
+                <Route path={`${path}/profile`} component={Profile}/>
+                <Route path={`${path}/edit_farm/:id`} component={CreateEditFarm}/>
+                <Route path={`${path}/items_list`} component={ItemsList}/>
+                <Route path={`${path}/farm_item/:id`} component={FarmItemForm}/>
+            </div>
             <Modal/>
             <Footer/>
         </div>
@@ -50,7 +53,8 @@ class MainContent extends React.Component {
 
 const putStateToProps = (state) => {
     return {
-        passedRegister: state.passedRegister
+        passedRegister: state.passedRegister,
+        globalLanguage: state.globalLanguage
     }
 };
 
